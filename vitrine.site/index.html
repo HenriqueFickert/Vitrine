@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
+    <title>Vitrine</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1 class="logo__content">Vitrine</h1>
+        </div>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__text" href="default.asp">HOME</a></li>
+            <li class="menu__item"><a class="menu__text" href="contact.asp">CONTACT</a></li>
+            <li class="menu__item"><a class="menu__text" href="about.asp">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container-body">
+            <div class="container_cards">
+                <ul id="container-cards" class="container__cards">
+                </ul>
+            </div>
+            <div class="container__btnarea">
+                <button id="btnShowMore" onclick="ShowMore()" class="container__btnarea_button">Mostrar Mais</button>
+            </div>
+            <div class="container__registro">
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">Copyright © 1997-2023 Vitrine. Todos os direitos reservados. Política de Privacidade e
+            Termos de Uso.</p>
+    </footer>
+</body>
+<script src="scripts/services.js"></script>
+<script src="scripts/home.js"></script>
+
+</html>
