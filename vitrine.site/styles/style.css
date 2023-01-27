@@ -11,8 +11,10 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 60px;
 }
 
+/* navbar */
 .navbar {
     position: fixed;
     display: inline-flex;
@@ -69,10 +71,11 @@ a.menu__text {
     background-color: #111;
 }
 
+/* body */
 .container-body {
-    background-color: rgb(255, 142, 142);
+    background-color: rgb(241, 241, 241);
+    padding-bottom: 10px;
     display: inline-block;
-    padding-top: 60px;
     height: 100%;
 }
 
@@ -83,11 +86,12 @@ a.menu__text {
 }
 
 .container-banner__banner {
-    max-width: 100%;
+    max-width: 1235px;
+    /* max-width: 100%; */
     height: auto;
 }
 
-.container_produtos {
+.container-produtos {
     width: 100%;
     max-width: 1235px;
     display: flex;
@@ -105,18 +109,67 @@ a.menu__text {
 
 .menu-busca {
     margin-right: 15px;
-    background-color: darkblue;
+    background-color: grey;
     border-radius: 5px;
+    min-width: 250px;
     width: 250px;
     height: 500px;
 }
 
-.produtos-cards-titulo {
-    font-size: 22px;
-    font-weight: bold;
+.menu-busca__list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
 }
 
-.list__cards {
+.menu-busca__submenu {
+    background-color: rgb(53, 53, 53);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 2px;
+}
+
+.menu-busca__submenu:hover {
+    cursor: pointer;
+    background-color: #111;
+}
+
+li:first-child.menu-busca__submenu {
+    border-radius: 5px 5px 0px 0px;
+}
+
+li:last-child.menu-busca__submenu {
+    border-radius: 0px 0px 5px 5px;
+}
+
+.submenu__text {
+    color: white;
+    margin-left: 10px;
+}
+
+.submenu__list {
+    background-color: aqua;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    display: block;
+    float: right;
+}
+
+.produtos-cards-titulo {
+    font-size: 22px;
+    color: rgb(53, 53, 53);
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.list-cards {
     margin: 0px 15px;
     padding: 0;
     max-width: 850px;
@@ -127,16 +180,17 @@ a.menu__text {
     list-style-type: none;
 }
 
-.list__cards__card {
+.card {
+    cursor: pointer;
     background-color: rgb(53, 53, 53);
-    margin: 15px 15px;
+    margin: 15px;
     height: 300px;
     width: 200px;
     display: inline-block;
     border-radius: 2%;
 }
 
-.list__cards__card__image {
+.card__image {
     margin: 10px;
     height: 140px;
     width: 180px;
@@ -144,7 +198,7 @@ a.menu__text {
     background-color: white;
 }
 
-.list__cards__card__text {
+.card__text {
     margin: 0 10px;
     height: 140px;
     max-width: 180px;
@@ -152,14 +206,14 @@ a.menu__text {
     color: white;
 }
 
-.list__cards__card__text__titulo {
+.card__text-titulo {
     margin: 0px;
     padding: 0px;
     font-weight: 400;
     font-size: 20px;
 }
 
-.list__cards__card__text__descricao {
+.card__text-descricao {
     margin: 5px 0px 10px 0px;
     padding: 0px;
     font-size: 10px;
@@ -167,20 +221,20 @@ a.menu__text {
     height: 60px;
 }
 
-.list__cards__card__text__quantidade {
+.card__text-quantidade {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
     text-align: left;
 }
 
-.list__cards__card__text__valor {
+.card__text-valor {
     margin: 0px;
     font-size: 20px;
     text-align: left;
 }
 
-.container__btnarea {
+.container-btn {
     margin: 0;
     padding: 0;
     display: flex;
@@ -189,7 +243,7 @@ a.menu__text {
     list-style-type: none;
 }
 
-.container__btnarea_button {
+.container-btn__button {
     margin: 10px;
     width: 150px;
     height: 30px;
@@ -200,11 +254,11 @@ a.menu__text {
     cursor: pointer;
 }
 
-.container__btnarea_button:disabled {
+.container-btn__button:disabled {
     display: none;
 }
 
-.container__btnarea_button:active {
+.container-btn__button:active {
     width: 150px;
     height: 30px;
     background-color: rgb(34, 33, 33);
@@ -214,8 +268,7 @@ a.menu__text {
     cursor: pointer;
 }
 
-.container__registro {}
-
+/* footer */
 .footer {
     background-color: rgb(53, 53, 53);
     flex-grow: 0;
@@ -231,3 +284,79 @@ a.menu__text {
     color: white;
     font-size: 13px;
 }
+
+
+
+
+
+
+
+/* body,
+.menu,
+.sub-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.menu,
+.sub-menu {
+    list-style: none;
+    background: #000;
+}
+
+.sub-menu {
+    background: #444;
+}
+
+.menu a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu>li {
+    float: left;
+}
+
+.menu>li:hover {
+    background: #444;
+}
+
+.menu li:hover>.sub-menu {
+    display: block;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+}
+
+.sub-menu li:hover {
+    background: #555;
+}
+
+.sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+} */
