@@ -13,18 +13,18 @@ async function GetProductData() {
 }
 
 function CreateCard(result) {
-    cardElement = document.getElementById("container-cards");
+    cardElement = document.getElementById("list-cards");
 
     result.forEach(element => {
-        cardElement.innerHTML += `<li id ="${element.id}"class="container__cards__card">
-        <div class="container__cards__card__image"></div>
-        <div class="container__cards__card__text">
-            <h2 class="container__cards__card__text__titulo">${element.nome}</h2>
-            <p class="container__cards__card__text__descricao">At vero eos et accusamus et iusto odio
+        cardElement.innerHTML += `<li id ="${element.id}"class="list__cards__card">
+        <div class="list__cards__card__image"></div>
+        <div class="list__cards__card__text">
+            <h2 class="list__cards__card__text__titulo">${element.nome}</h2>
+            <p class="list__cards__card__text__descricao">At vero eos et accusamus et iusto odio
                 dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
                 dolores et quas.</p>
-            <p class="container__cards__card__text__quantidade">Qnt: ${element.quantidade}</p>
-            <h3 class="container__cards__card__text__valor">R$ ${element.valor}</h3>
+            <p class="list__cards__card__text__quantidade">Qnt: ${element.quantidade}</p>
+            <h3 class="list__cards__card__text__valor">R$ ${element.valor}</h3>
         </div>
         </li>`;
     });

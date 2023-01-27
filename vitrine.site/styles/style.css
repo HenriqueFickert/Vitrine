@@ -8,8 +8,9 @@ body {
 }
 
 main {
-    flex-grow: 1;
-    flex-basis: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar {
@@ -70,22 +71,55 @@ a.menu__text {
 
 .container-body {
     background-color: rgb(255, 142, 142);
+    display: inline-block;
     padding-top: 60px;
     height: 100%;
 }
 
-.container_cards {
-    width: 100%;
+.container-banner {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container__cards {
-    background-color: aquamarine;
-    margin: 0;
+.container-banner__banner {
+    max-width: 100%;
+    height: auto;
+}
+
+.container_produtos {
+    width: 100%;
+    max-width: 1235px;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    margin-top: 15px;
+    text-align: center;
+    padding: 0px;
+}
+
+.container-cards {
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.menu-busca {
+    margin-right: 15px;
+    background-color: darkblue;
+    border-radius: 5px;
+    width: 250px;
+    height: 500px;
+}
+
+.produtos-cards-titulo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.list__cards {
+    margin: 0px 15px;
     padding: 0;
-    max-width: 1200px;
+    max-width: 850px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -93,7 +127,7 @@ a.menu__text {
     list-style-type: none;
 }
 
-.container__cards__card {
+.list__cards__card {
     background-color: rgb(53, 53, 53);
     margin: 15px 15px;
     height: 300px;
@@ -102,7 +136,7 @@ a.menu__text {
     border-radius: 2%;
 }
 
-.container__cards__card__image {
+.list__cards__card__image {
     margin: 10px;
     height: 140px;
     width: 180px;
@@ -110,7 +144,7 @@ a.menu__text {
     background-color: white;
 }
 
-.container__cards__card__text {
+.list__cards__card__text {
     margin: 0 10px;
     height: 140px;
     max-width: 180px;
@@ -118,14 +152,14 @@ a.menu__text {
     color: white;
 }
 
-.container__cards__card__text__titulo {
+.list__cards__card__text__titulo {
     margin: 0px;
     padding: 0px;
     font-weight: 400;
     font-size: 20px;
 }
 
-.container__cards__card__text__descricao {
+.list__cards__card__text__descricao {
     margin: 5px 0px 10px 0px;
     padding: 0px;
     font-size: 10px;
@@ -133,14 +167,14 @@ a.menu__text {
     height: 60px;
 }
 
-.container__cards__card__text__quantidade {
+.list__cards__card__text__quantidade {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
     text-align: left;
 }
 
-.container__cards__card__text__valor {
+.list__cards__card__text__valor {
     margin: 0px;
     font-size: 20px;
     text-align: left;
