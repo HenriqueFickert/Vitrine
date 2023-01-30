@@ -11,8 +11,8 @@
 
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <h1 class="logo__content">Vitrine</h1>
+        <div class="container-logo">
+            <h1 class="container-logo__logo">Vitrine</h1>
         </div>
         <ul class="menu">
             <li class="menu__item"><a class="menu__text" href="default.asp">HOME</a></li>
@@ -27,7 +27,6 @@
                 <img class="container-banner__banner" src="/img/banner.png" alt="banner">
             </div>
             <div class="container-produtos">
-
                 <!-- Menu Lateral -->
                 <div class="menu-busca">
                     <ul class="menu-busca__list clearfix">
@@ -69,17 +68,13 @@
                         </li>
                     </ul>
                 </div>
-
-
-
+                <!--Cards-->
                 <div class="container-cards">
                     <h2 class="produtos-cards-titulo">LANÇAMENTOS</h2>
                     <ul id="list-cards" class="list-cards">
                     </ul>
-                    <div class="container-btn">
-                        <button id="btnShowMore" onclick="ShowMore()" class="container-btn__button">Mostrar
-                            Mais</button>
-                    </div>
+                    <button id="btnShowMore" onclick="ShowMore()" class="showmore-button">Mostrar
+                        Mais</button>
                 </div>
             </div>
         </div>

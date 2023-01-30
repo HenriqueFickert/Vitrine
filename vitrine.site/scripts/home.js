@@ -18,9 +18,15 @@ function CreateCard(result) {
     result.forEach(element => {
         cardElement.innerHTML += `<li id ="${element.id}"class="card">
         <div class="card__image"></div>
-        <div class="card__text">
+        <div class="card__texts">
             <h2 class="card__text-titulo">${element.nome}</h2>
             <p class="card__text-descricao">At vero eos et accusamus et iusto odio
+                dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+                dolores et quas. At vero eos et accusamus et iusto odio
+                dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+                dolores et quas. At vero eos et accusamus et iusto odio
+                dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+                dolores et quas. At vero eos et accusamus et iusto odio
                 dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
                 dolores et quas.</p>
             <p class="card__text-quantidade">Qnt: ${element.quantidade}</p>
