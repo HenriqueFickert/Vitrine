@@ -1,0 +1,21 @@
+﻿using AutoMapper;
+using VitrineAPI.Application.Dtos.Produto;
+using VitrineAPI.Domain.Entities;
+
+namespace VitrineAPI.Application.Mappers
+{
+    public class ProdutoMappingProfile : Profile
+    {
+        public ProdutoMappingProfile()
+        {
+            Map();
+        }
+
+        private void Map()
+        {
+            CreateMap<Produto, ViewProdutoDto>().ReverseMap();
+            CreateMap<Produto, PostProdutoDto>().ReverseMap();
+            CreateMap<Produto, PutProdutoDto>().ReverseMap();
+        }
+    }
+}
