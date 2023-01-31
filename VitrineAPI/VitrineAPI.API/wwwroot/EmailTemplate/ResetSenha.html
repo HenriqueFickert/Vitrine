@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="telephone=no" name="format-detection" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            border: none;
+            background-color: #f2f3f8;
+        }
+
+        .bg-img {
+            background-image: url(https://sistemashomologacao.suafaculdade.com.br/objetivoeventos/Arquivos/EmailTemplate/Imagens/bg-email.png);
+            background-position: center;
+            background-size: cover;
+            border: none;
+            width: 100%;
+            background-color: #f2f3f8;
+            font-family: Lexend, sans-serif;
+        }
+
+        .content-email {
+            background-color: transparent;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            border: 0;
+        }
+
+        .spacing {
+            height: 100px;
+        }
+
+        .email-card {
+            width: 100%;
+            border: none;
+            background: #fff;
+            max-width: 670px;
+            text-align: center;
+        }
+
+        .header {
+            height: 90px;
+            text-align: center;
+            background-color: #0655A9;
+        }
+
+        .logo-img {
+            height: auto;
+            width: auto;
+            max-width: 300px;
+            max-height: 56px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .conteudo {
+            padding: 20px 35px;
+        }
+
+        .titulo {
+            color: #1e1e2d;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .divisao {
+            display: inline-block;
+            margin: 10px 0 10px;
+            border-bottom: 1px solid #cecece;
+            width: 300px;
+        }
+
+        .subtitulo {
+            color: #455056;
+            line-height: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        .paragrafo {
+            color: #455056;
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .footer {
+            font-size: 0.8em;
+            color: #fff;
+            background: #0655A9;
+            height: 40px;
+        }
+
+        .botao {
+            background: #0655A9;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: #fff !important;
+            text-transform: uppercase;
+            font-size: 14px;
+            padding: 10px 24px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--100% body table-->
+    <table class="bg-img">
+        <tr>
+            <td>
+                <table class="content-email">
+                    <tr class="spacing"></tr>
+
+                    <tr>
+                        <td>
+                            <table class="email-card" cellspacing="0">
+                                <tr class="header">
+                                    <th>
+                                        <a href="https://sistemashomologacao.suafaculdade.com.br/ObjetivoEventos/site/login"
+                                           target="_blank">
+                                            <img class="logo-img"
+                                                 src="https://sistemashomologacao.suafaculdade.com.br/objetivoeventos/Arquivos/EmailTemplate/Imagens/logo-obj-eventos-Horizontal.png"
+                                                 title="Logo" alt="Logo" />
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo">
+                                        <h2 class="titulo">
+                                            Olá, {{UserName}}
+                                        </h2>
+                                        <span class="divisao"></span>
+                                        <h3 class="subtitulo">
+                                            Obrigado por utilizar o nosso site.
+                                        </h3>
+                                        <p class="paragrafo">
+                                            Você solicitou para resetar a senha de sua conta. Clique no link abaixo para confirmar a solicitação.
+                                        </p>
+
+                                        <a class="botao" target="_blank" href="{{Link}}">Resetar Senha</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="footer">Copyright © 1997-{{Year}} Colégio Objetivo.</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="spacing"></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--/100% body table-->
+</body>
+</html>
