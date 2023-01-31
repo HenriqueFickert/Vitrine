@@ -1,5 +1,5 @@
-﻿using VitrineAPI.Domain.Core.Interfaces.Services;
-using System.Security.Claims;
+﻿using System.Security.Claims;
+using VitrineAPI.Domain.Core.Interfaces.Services;
 
 namespace VitrineAPI.API.Extensions
 {

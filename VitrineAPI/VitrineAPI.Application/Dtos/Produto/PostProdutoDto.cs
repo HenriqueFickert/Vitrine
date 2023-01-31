@@ -1,5 +1,5 @@
-﻿using VitrineAPI.Domain.Enum;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using VitrineAPI.Domain.Enum;
 
 namespace VitrineAPI.Application.Dtos.Produto
 {

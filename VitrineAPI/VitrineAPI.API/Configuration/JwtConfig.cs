@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using VitrineAPI.API.Extensions;
 using VitrineAPI.Identity.Constants;
 using VitrineAPI.Identity.Extensions;
 using VitrineAPI.Identity.Policies.HorarioComercial;
-using System.Text;
 
 namespace VitrineAPI.API.Configuration
 {

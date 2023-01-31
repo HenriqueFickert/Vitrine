@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VitrineAPI.API.Controllers;
 using VitrineAPI.Application.Dtos.Base;
 using VitrineAPI.Application.Dtos.Pagination;

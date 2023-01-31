@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using VitrineAPI.API.Extensions;
 using VitrineAPI.Application.Applications;
 using VitrineAPI.Application.Interfaces;
@@ -7,7 +8,6 @@ using VitrineAPI.Domain.Core.Interfaces.Services;
 using VitrineAPI.Domain.Core.Notifier;
 using VitrineAPI.Domain.Service;
 using VitrineAPI.Infrastructure.Data.Repositories;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace VitrineAPI.API.Configuration
 {

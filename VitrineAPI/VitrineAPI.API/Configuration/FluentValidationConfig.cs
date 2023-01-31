@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
-using VitrineAPI.Application.Dtos.Produto;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 using System.Text.Json.Serialization;
+using VitrineAPI.Application.Dtos.Produto;
 
 namespace VitrineAPI.API.Configuration
 {

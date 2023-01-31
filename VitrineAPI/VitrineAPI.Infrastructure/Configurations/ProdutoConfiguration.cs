@@ -5,7 +5,7 @@ using VitrineAPI.Infrastructure.Configurations.Base;
 
 namespace VitrineAPI.Infrastructure.Configurations
 {
-    public class ProdutoConfiguration : ConfigurationBase<Produto>
+    public class ProdutoConfiguration : ConfigurationUploadFormBase<Produto>
     {
         public override void Configure(EntityTypeBuilder<Produto> builder)
         {
@@ -16,6 +16,12 @@ namespace VitrineAPI.Infrastructure.Configurations
             builder.Property(p => p.Nome)
                     .IsRequired()
                     .HasColumnName("Nome")
+                    .HasMaxLength(300)
+                    .HasColumnType("varchar(300)");
+
+            builder.Property(p => p.Descricao)
+                    .IsRequired()
+                    .HasColumnName("Descricao")
                     .HasMaxLength(300)
                     .HasColumnType("varchar(300)");
 

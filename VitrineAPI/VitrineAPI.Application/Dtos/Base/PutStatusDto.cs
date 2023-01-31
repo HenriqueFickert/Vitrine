@@ -1,6 +1,6 @@
-﻿using VitrineAPI.Application.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
+using VitrineAPI.Application.Attributes;
 using VitrineAPI.Domain.Enum;
-using System.ComponentModel.DataAnnotations;
 
 namespace VitrineAPI.Application.Dtos.Base
 {

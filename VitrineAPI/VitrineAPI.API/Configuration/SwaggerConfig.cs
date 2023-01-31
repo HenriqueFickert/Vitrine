@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using VitrineAPI.API.Extensions;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using VitrineAPI.API.Extensions;
 
 namespace VitrineAPI.API.Configuration
 {
