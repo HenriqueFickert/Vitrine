@@ -7,6 +7,7 @@ using VitrineAPI.Domain.Core.Interfaces.Repositories;
 using VitrineAPI.Domain.Core.Interfaces.Services;
 using VitrineAPI.Domain.Core.Notifier;
 using VitrineAPI.Domain.Service;
+using VitrineAPI.Infrastructure.Data;
 using VitrineAPI.Infrastructure.Data.Repositories;
 
 namespace VitrineAPI.API.Configuration
@@ -19,9 +20,9 @@ namespace VitrineAPI.API.Configuration
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoApplication, ProdutoApplication>();
 
-            //services.AddScoped<IUsuarioApplication, UsuarioApplication>();
-            //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            //services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioApplication, UsuarioApplication>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

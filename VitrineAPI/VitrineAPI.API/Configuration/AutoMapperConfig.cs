@@ -7,7 +7,8 @@ namespace VitrineAPI.API.Configuration
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
             services.AddAutoMapper(
-               typeof(ProdutoMappingProfile));
+               typeof(ProdutoMappingProfile),
+               typeof(UsuarioMappingProfile));
         }
     }
 }

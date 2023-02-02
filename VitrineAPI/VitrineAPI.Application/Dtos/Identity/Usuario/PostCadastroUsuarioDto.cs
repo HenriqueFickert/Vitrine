@@ -46,7 +46,7 @@ namespace VitrineAPI.Application.Dtos.Identity.Usuario
         /// <summary>
         /// CPF
         /// </summary>
-        /// <example>55663601813</example>
+        /// <example>59398958082</example>
         [Display(Name = "CPF do usuário.")]
         [Required(ErrorMessage = "O campo CPF do usuário é obrigatório.")]
         [RegularExpression(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}", ErrorMessage = "O CPF do usuário está em formato inválido.")]

@@ -6,6 +6,7 @@ using Newtonsoft.Json.Converters;
 using System.Globalization;
 using System.Text.Json.Serialization;
 using VitrineAPI.Application.Dtos.Produto;
+using VitrineAPI.Application.Validations.Usuario;
 
 namespace VitrineAPI.API.Configuration
 {
@@ -29,7 +30,7 @@ namespace VitrineAPI.API.Configuration
             services.AddValidatorsFromAssemblyContaining<PostProdutoDto>();
             services.AddValidatorsFromAssemblyContaining<PutProdutoDto>();
 
-            //services.AddValidatorsFromAssemblyContaining<PostUsuarioValidator>();
+            services.AddValidatorsFromAssemblyContaining<PostUsuarioValidator>();
             // services.AddValidatorsFromAssemblyContaining<PutUsuarioValidator>();
 
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("pt-BR");
