@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VitrineAPI.Domain.Enum;
 
 namespace VitrineAPI.API.V1.Controllers
 {
@@ -7,10 +8,13 @@ namespace VitrineAPI.API.V1.Controllers
     [ApiController]
     public class VersaoController : ControllerBase
     {
+        private readonly Ambiente ambiente;
         private const string versao = "Esta é a versão V1.";
 
-        public VersaoController()
+        public VersaoController(IWebHostEnvironment environment)
         {
+            ambiente = environment.IsProduction() ? Ambiente.Producao :
+              environment.IsStaging() ? Ambiente.Homologacao : Ambiente.Desenvolvimento;
         }
 
         /// <summary>
@@ -23,6 +27,18 @@ namespace VitrineAPI.API.V1.Controllers
         public string Valor()
         {
             return versao;
+        }
+
+        /// <summary>
+        /// Informa o ambiente da API.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("ambiente")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public string AmbienteAtual()
+        {
+            return ambiente.ToString();
         }
     }
 }
