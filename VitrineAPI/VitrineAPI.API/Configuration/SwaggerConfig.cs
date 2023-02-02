@@ -43,7 +43,7 @@ namespace VitrineAPI.API.Configuration
                 //string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 //string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 //options.IncludeXmlComments(xmlPath);
-                //xmlPath = Path.Combine(AppContext.BaseDirectory, "ObjetivoEventos.Application.xml");
+                //xmlPath = Path.Combine(AppContext.BaseDirectory, "VitrineAPI.Application.xml");
                 //options.IncludeXmlComments(xmlPath);
             });
 

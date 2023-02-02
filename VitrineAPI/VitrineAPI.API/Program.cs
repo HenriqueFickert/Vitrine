@@ -22,7 +22,7 @@ builder.Services.AddIdentityConfiguration(configurationManager);
 
 builder.Services.AddDependencyInjectionConfiguration();
 
-//builder.Services.AddSMTPConfiguration(configurationManager);
+builder.Services.AddSMTPConfiguration(configurationManager);
 
 builder.Services.AddSwaggerConfiguration();
 

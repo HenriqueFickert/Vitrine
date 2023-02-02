@@ -19,11 +19,15 @@ namespace VitrineAPI.API.Configuration
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoApplication, ProdutoApplication>();
 
+            //services.AddScoped<IUsuarioApplication, UsuarioApplication>();
+            //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            //services.AddScoped<IUsuarioService, UsuarioService>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IUser, AspNetUser>();
 
-            //services.AddScoped<IEmailApplication, EmailApplication>();
+            services.AddScoped<IEmailApplication, EmailApplication>();
 
             services.AddScoped<INotificador, Notificador>();
 

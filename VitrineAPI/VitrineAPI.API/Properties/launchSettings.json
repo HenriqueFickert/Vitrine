@@ -33,7 +33,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
-    "ObjetivoEventos.API": {
+    "VitrineAPI.API": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
@@ -45,4 +45,3 @@
     }
   }
 }
-//7007:5232
