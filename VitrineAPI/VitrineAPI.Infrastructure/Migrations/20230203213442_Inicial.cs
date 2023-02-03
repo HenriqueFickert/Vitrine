@@ -93,7 +93,7 @@ namespace VitrineAPI.Infrastructure.Migrations
                     Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Valor = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
                     Quantidade = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
-                    CondicaoProduto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "1"),
+                    CondicaoProduto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Novo"),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "1"),
                     CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true),

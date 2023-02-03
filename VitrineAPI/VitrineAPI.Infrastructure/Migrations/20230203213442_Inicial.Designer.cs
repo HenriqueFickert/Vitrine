@@ -12,7 +12,7 @@ using VitrineAPI.Infrastructure.Data;
 namespace VitrineAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230203213231_Inicial")]
+    [Migration("20230203213442_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,7 +148,7 @@ namespace VitrineAPI.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
-                        .HasDefaultValue("1")
+                        .HasDefaultValue("Novo")
                         .HasColumnName("CondicaoProduto");
 
                     b.Property<string>("ContentType")

@@ -42,7 +42,7 @@ namespace VitrineAPI.Infrastructure.Configurations
                      .HasMaxLength(50)
                      .HasColumnName("CondicaoProduto")
                      .HasColumnType("varchar(50)")
-                     .HasDefaultValue(1);
+                     .HasDefaultValue("Novo");
         }
     }
 }

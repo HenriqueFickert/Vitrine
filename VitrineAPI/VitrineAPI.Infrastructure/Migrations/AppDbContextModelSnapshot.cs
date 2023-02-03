@@ -146,7 +146,7 @@ namespace VitrineAPI.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
-                        .HasDefaultValue("1")
+                        .HasDefaultValue("Novo")
                         .HasColumnName("CondicaoProduto");
 
                     b.Property<string>("ContentType")
