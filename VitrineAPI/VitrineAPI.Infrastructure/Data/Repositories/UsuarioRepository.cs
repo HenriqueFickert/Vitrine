@@ -5,7 +5,7 @@ using VitrineAPI.Domain.Pagination;
 using VitrineAPI.Identity.Data;
 using VitrineAPI.Identity.Entities;
 
-namespace VitrineAPI.Infrastructure.Data
+namespace VitrineAPI.Infrastructure.Data.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {

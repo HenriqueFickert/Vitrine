@@ -16,6 +16,10 @@ namespace VitrineAPI.Identity.Configurations
                 .HasMaxLength(100)
                 .HasColumnType("varchar(100)");
 
+            builder.Property(u => u.CPF)
+                .HasMaxLength(128)
+                .HasColumnType("varchar(128)");
+
             builder.Property(u => u.UserName)
                 .HasMaxLength(128)
                 .HasColumnType("varchar(128)");

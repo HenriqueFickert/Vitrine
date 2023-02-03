@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 using VitrineAPI.API.Extensions;
 
 namespace VitrineAPI.API.Configuration
@@ -40,11 +41,11 @@ namespace VitrineAPI.API.Configuration
                 });
                 options.OperationFilter<IgnorePropertyFilter>();
 
-                //string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //options.IncludeXmlComments(xmlPath);
-                //xmlPath = Path.Combine(AppContext.BaseDirectory, "VitrineAPI.Application.xml");
-                //options.IncludeXmlComments(xmlPath);
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+                xmlPath = Path.Combine(AppContext.BaseDirectory, "VitrineAPI.Application.xml");
+                options.IncludeXmlComments(xmlPath);
             });
 
             return services;

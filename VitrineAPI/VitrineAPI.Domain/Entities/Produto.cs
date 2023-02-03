@@ -5,6 +5,10 @@ namespace VitrineAPI.Domain.Entities
 {
     public class Produto : UploadIFormFileBase
     {
+        public Guid SubCategoriaId { get; private set; }
+
+        public Guid FabricanteId { get; private set; }
+
         public string Nome { get; private set; }
 
         public string Descricao { get; private set; }

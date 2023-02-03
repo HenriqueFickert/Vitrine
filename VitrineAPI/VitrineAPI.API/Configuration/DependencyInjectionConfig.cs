@@ -7,7 +7,6 @@ using VitrineAPI.Domain.Core.Interfaces.Repositories;
 using VitrineAPI.Domain.Core.Interfaces.Services;
 using VitrineAPI.Domain.Core.Notifier;
 using VitrineAPI.Domain.Service;
-using VitrineAPI.Infrastructure.Data;
 using VitrineAPI.Infrastructure.Data.Repositories;
 
 namespace VitrineAPI.API.Configuration

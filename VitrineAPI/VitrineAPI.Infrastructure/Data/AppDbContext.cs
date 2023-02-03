@@ -11,6 +11,9 @@ namespace VitrineAPI.Infrastructure.Data
         }
 
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<SubCategoria> SubCategorias { get; set; }
+        public DbSet<Fabricante> Fabricantes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
