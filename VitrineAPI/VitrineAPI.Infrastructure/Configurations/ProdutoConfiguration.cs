@@ -36,6 +36,13 @@ namespace VitrineAPI.Infrastructure.Configurations
                    .HasMaxLength(10000)
                    .HasColumnName("Quantidade")
                    .HasColumnType("int");
+
+            builder.Property(p => p.CondicaoProduto)
+                     .IsRequired()
+                     .HasMaxLength(50)
+                     .HasColumnName("CondicaoProduto")
+                     .HasColumnType("varchar(50)")
+                     .HasDefaultValue(1);
         }
     }
 }

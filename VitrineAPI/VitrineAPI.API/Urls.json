@@ -1,5 +1,10 @@
 {
-  "ProjetoDesenvolvimento": {
+  "ProdutoDesenvolvimento": {
+    "IP": "\\\\205.144.171.86\\Sites\\Sistemas\\DevLabs\\Arquivos\\Projeto\\Imagens",
+    "DNS": "https://sistemashomologacao.suafaculdade.com.br/DevLabs/Arquivos/Projeto/Imagens",
+    "SPLIT": "DevLabs/"
+  },
+  "ProdutoProducao": {
     "IP": "\\\\192.168.103.20\\Sites\\Sistemas\\DevLabs\\Arquivos\\Projeto\\Imagens",
     "DNS": "https://sistemashomologacao.suafaculdade.com.br/DevLabs/Arquivos/Projeto/Imagens",
     "SPLIT": "DevLabs/"

@@ -8,6 +8,9 @@ namespace VitrineAPI.API.Configuration
         {
             services.AddAutoMapper(
                typeof(ProdutoMappingProfile),
+               typeof(CategoriaMappingProfile),
+               typeof(SubCategoriaMappingProfile),
+               typeof(FabricanteMappingProfile),
                typeof(UsuarioMappingProfile));
         }
     }

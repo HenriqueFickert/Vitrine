@@ -8,7 +8,7 @@ namespace VitrineAPI.Application.Dtos.Produto
     public class PutProdutoDto : PostProdutoDto
     {
         /// <summary>
-        /// Id da Cadeira
+        /// Id da Produto
         /// </summary>
         /// <example>876777D9-EE18-4798-D3AE-08DA85F40146</example>
         [Display(Name = "Id do produto.")]

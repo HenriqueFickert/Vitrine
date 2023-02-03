@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -9,61 +10,52 @@ namespace VitrineAPI.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categoria",
+                name: "Categorias",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Ativo"),
                     CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categoria", x => x.Id);
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Fabricante",
+                name: "Fabricantes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CNPJ = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    NomeArquivoBanco = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TamanhoEmBytes = table.Column<long>(type: "bigint", nullable: false),
-                    ContentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExtensaoArquivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NomeArquivoOriginal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CaminhoRelativo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CaminhoAbsoluto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CaminhoFisico = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HoraEnvio = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fabricante", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SubCategoria",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    CNPJ = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Ativo"),
                     CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubCategoria", x => x.Id);
+                    table.PrimaryKey("PK_Fabricantes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubCategorias",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Ativo"),
+                    CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubCategorias", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,15 +69,15 @@ namespace VitrineAPI.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_CategoriaSubCategoria", x => new { x.CategoriasId, x.SubCategoriasId });
                     table.ForeignKey(
-                        name: "FK_CategoriaSubCategoria_Categoria_CategoriasId",
+                        name: "FK_CategoriaSubCategoria_Categorias_CategoriasId",
                         column: x => x.CategoriasId,
-                        principalTable: "Categoria",
+                        principalTable: "Categorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoriaSubCategoria_SubCategoria_SubCategoriasId",
+                        name: "FK_CategoriaSubCategoria_SubCategorias_SubCategoriasId",
                         column: x => x.SubCategoriasId,
-                        principalTable: "SubCategoria",
+                        principalTable: "SubCategorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -95,39 +87,39 @@ namespace VitrineAPI.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SubCategoriaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FabricanteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Valor = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
                     Quantidade = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
-                    CondicaoProduto = table.Column<int>(type: "int", nullable: false),
-                    SubCategoriaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FabricanteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CondicaoProduto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "1"),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "1"),
                     CriadoEm = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AlteradoEm = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NomeArquivoBanco = table.Column<Guid>(type: "uniqueidentifier", maxLength: 50, nullable: false, defaultValueSql: "NEWID()"),
                     TamanhoEmBytes = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    ContentType = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    ExtensaoArquivo = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    NomeArquivoOriginal = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    CaminhoRelativo = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    CaminhoAbsoluto = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    CaminhoFisico = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    ContentType = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    ExtensaoArquivo = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    NomeArquivoOriginal = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    CaminhoRelativo = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    CaminhoAbsoluto = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    CaminhoFisico = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
                     HoraEnvio = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Produtos_Fabricante_FabricanteId",
+                        name: "FK_Produtos_Fabricantes_FabricanteId",
                         column: x => x.FabricanteId,
-                        principalTable: "Fabricante",
+                        principalTable: "Fabricantes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Produtos_SubCategoria_SubCategoriaId",
+                        name: "FK_Produtos_SubCategorias_SubCategoriaId",
                         column: x => x.SubCategoriaId,
-                        principalTable: "SubCategoria",
+                        principalTable: "SubCategorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -157,13 +149,13 @@ namespace VitrineAPI.Infrastructure.Migrations
                 name: "Produtos");
 
             migrationBuilder.DropTable(
-                name: "Categoria");
+                name: "Categorias");
 
             migrationBuilder.DropTable(
-                name: "Fabricante");
+                name: "Fabricantes");
 
             migrationBuilder.DropTable(
-                name: "SubCategoria");
+                name: "SubCategorias");
         }
     }
 }

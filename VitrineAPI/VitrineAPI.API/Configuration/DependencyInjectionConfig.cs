@@ -19,6 +19,18 @@ namespace VitrineAPI.API.Configuration
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoApplication, ProdutoApplication>();
 
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<ICategoriaApplication, CategoriaApplication>();
+
+            services.AddScoped<ISubCategoriaRepository, SubCategoriaRepository>();
+            services.AddScoped<ISubCategoriaService, SubCategoriaService>();
+            services.AddScoped<ISubCategoriaApplication, SubCategoriaApplication>();
+
+            services.AddScoped<IFabricanteRepository, FabricanteRepository>();
+            services.AddScoped<IFabricanteService, FabricanteService>();
+            services.AddScoped<IFabricanteApplication, FabricanteApplication>();
+
             services.AddScoped<IUsuarioApplication, UsuarioApplication>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioService, UsuarioService>();

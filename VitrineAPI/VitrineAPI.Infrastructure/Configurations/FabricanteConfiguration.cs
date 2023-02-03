@@ -25,7 +25,11 @@ namespace VitrineAPI.Infrastructure.Configurations
                     .HasMaxLength(300)
                     .HasColumnType("varchar(300)");
 
-            //TODO: Adicionar CNPJ em String
+            builder.Property(p => p.CNPJ)
+                    .IsRequired()
+                    .HasColumnName("CNPJ")
+                    .HasMaxLength(300)
+                    .HasColumnType("varchar(300)");
         }
     }
 }

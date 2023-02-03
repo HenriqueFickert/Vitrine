@@ -9,6 +9,7 @@ namespace VitrineAPI.Application.Utilities.Paths
 
         public static async Task GetUrlJson()
         {
+            //TODO: Pegar o caminho root talvez?
             string json = File.ReadAllText(Directory.GetCurrentDirectory() + "\\Urls.json");
             Paths = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
             await Task.CompletedTask;

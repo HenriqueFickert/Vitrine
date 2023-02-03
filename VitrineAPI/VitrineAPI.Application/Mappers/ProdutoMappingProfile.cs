@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using VitrineAPI.Application.Dtos.Fabricante;
 using VitrineAPI.Application.Dtos.Produto;
+using VitrineAPI.Application.Dtos.SubCategoria;
 using VitrineAPI.Domain.Entities;
 
 namespace VitrineAPI.Application.Mappers
@@ -16,6 +18,9 @@ namespace VitrineAPI.Application.Mappers
             CreateMap<Produto, ViewProdutoDto>().ReverseMap();
             CreateMap<Produto, PostProdutoDto>().ReverseMap();
             CreateMap<Produto, PutProdutoDto>().ReverseMap();
+
+            CreateMap<SubCategoria, ViewSubCategoriaDto>().ReverseMap();
+            CreateMap<Fabricante, ViewFabricanteDto>().ReverseMap();
         }
     }
 }

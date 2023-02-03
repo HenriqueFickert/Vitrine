@@ -10,9 +10,12 @@ namespace VitrineAPI.API.V1.Controllers
     {
         private readonly Ambiente ambiente;
         private const string versao = "Esta é a versão V1.";
+        public readonly IWebHostEnvironment webHostEnvironment;
 
         public VersaoController(IWebHostEnvironment environment)
         {
+            webHostEnvironment = environment;
+
             ambiente = environment.IsProduction() ? Ambiente.Producao :
               environment.IsStaging() ? Ambiente.Homologacao : Ambiente.Desenvolvimento;
         }
@@ -39,6 +42,23 @@ namespace VitrineAPI.API.V1.Controllers
         public string AmbienteAtual()
         {
             return ambiente.ToString();
+        }
+
+        /// <summary>
+        /// Informa o root da API.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("apiroot")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public string Root()
+        {
+            string _webRootPath = webHostEnvironment.WebRootPath;
+            string _contentRootPath = webHostEnvironment.ContentRootPath;
+
+            string result = _webRootPath + " / " + _contentRootPath;
+
+            return result;
         }
     }
 }

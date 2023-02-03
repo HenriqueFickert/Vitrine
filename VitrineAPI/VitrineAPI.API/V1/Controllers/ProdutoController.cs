@@ -4,6 +4,7 @@ using VitrineAPI.Application.Dtos.Base;
 using VitrineAPI.Application.Dtos.Pagination;
 using VitrineAPI.Application.Dtos.Produto;
 using VitrineAPI.Application.Interfaces;
+using VitrineAPI.Application.Utilities.Paths;
 using VitrineAPI.Domain.Core.Interfaces.Services;
 using VitrineAPI.Domain.Core.Notifier;
 using VitrineAPI.Domain.Entities;
@@ -18,12 +19,17 @@ namespace VitrineAPI.API.V1.Controllers
     public class ProdutoController : MainController
     {
         private readonly IProdutoApplication produtoApplication;
+        private readonly Ambiente ambiente;
 
         public ProdutoController(IProdutoApplication produtoApplication,
+                                IWebHostEnvironment environment,
                                 INotificador notificador,
                                 IUser user) : base(notificador, user)
         {
             this.produtoApplication = produtoApplication;
+
+            ambiente = environment.IsProduction() ? Ambiente.Producao :
+                environment.IsStaging() ? Ambiente.Homologacao : Ambiente.Desenvolvimento;
         }
 
         /// <summary>
@@ -51,16 +57,25 @@ namespace VitrineAPI.API.V1.Controllers
         /// Insere um novo produto.
         /// </summary>
         /// <param name="postProdutoDto"></param>
+        /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ViewProdutoDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostAsync([FromBody] PostProdutoDto postProdutoDto)
+        public async Task<IActionResult> PostAsync([FromForm] PostProdutoDto postProdutoDto, Diretorios diretorios)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
 
-            ViewProdutoDto inserido = await produtoApplication.PostAsync(postProdutoDto);
+            if (!await PathSystem.ValidateURLs(diretorios.ToString(), ambiente))
+            {
+                NotificarErro("Diretório não encontrado.");
+                return CustomResponse(ModelState);
+            }
+
+            Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
+
+            ViewProdutoDto inserido = await produtoApplication.PostAsync(postProdutoDto, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
 
             if (inserido is null)
             {
@@ -75,24 +90,48 @@ namespace VitrineAPI.API.V1.Controllers
         /// Altera um produto.
         /// </summary>
         /// <param name="putProdutoDto"></param>
+        /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(typeof(ViewProdutoDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutAsync([FromBody] PutProdutoDto putProdutoDto)
+        public async Task<IActionResult> PutAsync([FromForm] PutProdutoDto putProdutoDto, Diretorios diretorios)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
 
-            ViewProdutoDto atualizado = await produtoApplication.PutAsync(putProdutoDto);
-
-            if (atualizado is null)
+            if (putProdutoDto.ImagemUpload is not null)
             {
-                NotificarErro("Nenhum produto foi encontrado com o id informado.");
-                return CustomResponse(ModelState);
-            }
+                if (!await PathSystem.ValidateURLs(diretorios.ToString(), ambiente))
+                {
+                    NotificarErro("Diretório não encontrado.");
+                    return CustomResponse(ModelState);
+                }
 
-            return CustomResponse(atualizado, "Produto atualizado com sucesso!");
+                Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
+
+                ViewProdutoDto atualizado = await produtoApplication.PutAsync(putProdutoDto, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+
+                if (atualizado is null)
+                {
+                    NotificarErro("Nenhum evento foi encontrado com o id informado.");
+                    return CustomResponse(ModelState);
+                }
+
+                return CustomResponse(atualizado, "Evento atualizado com sucesso!");
+            }
+            else
+            {
+                ViewProdutoDto atualizado = await produtoApplication.PutAsync(putProdutoDto, "", "", "");
+
+                if (atualizado is null)
+                {
+                    NotificarErro("Nenhum evento foi encontrado com o id informado.");
+                    return CustomResponse(ModelState);
+                }
+
+                return CustomResponse(atualizado, "Evento atualizado com sucesso!");
+            }
         }
 
         /// <summary>

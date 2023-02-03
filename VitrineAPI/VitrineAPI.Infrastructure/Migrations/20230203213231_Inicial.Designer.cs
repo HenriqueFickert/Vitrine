@@ -12,7 +12,7 @@ using VitrineAPI.Infrastructure.Data;
 namespace VitrineAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230202210554_Inicial")]
+    [Migration("20230203213231_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,19 +53,27 @@ namespace VitrineAPI.Infrastructure.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Descricao");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Nome");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("Ativo")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categorias", (string)null);
                 });
 
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Fabricante", b =>
@@ -77,60 +85,38 @@ namespace VitrineAPI.Infrastructure.Migrations
                     b.Property<DateTime?>("AlteradoEm")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CaminhoAbsoluto")
+                    b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CaminhoFisico")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CaminhoRelativo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("CNPJ");
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExtensaoArquivo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("HoraEnvio")
-                        .HasColumnType("datetime2");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Descricao");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("NomeArquivoBanco")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("NomeArquivoOriginal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Nome");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("TamanhoEmBytes")
-                        .HasColumnType("bigint");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("Ativo")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Fabricante");
+                    b.ToTable("Fabricantes", (string)null);
                 });
 
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Produto", b =>
@@ -143,28 +129,29 @@ namespace VitrineAPI.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CaminhoAbsoluto")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)")
                         .HasColumnName("CaminhoAbsoluto");
 
                     b.Property<string>("CaminhoFisico")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)")
                         .HasColumnName("CaminhoFisico");
 
                     b.Property<string>("CaminhoRelativo")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)")
                         .HasColumnName("CaminhoRelativo");
 
-                    b.Property<int>("CondicaoProduto")
-                        .HasColumnType("int");
+                    b.Property<string>("CondicaoProduto")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("1")
+                        .HasColumnName("CondicaoProduto");
 
                     b.Property<string>("ContentType")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)")
                         .HasColumnName("ContentType");
@@ -179,7 +166,6 @@ namespace VitrineAPI.Infrastructure.Migrations
                         .HasColumnName("Descricao");
 
                     b.Property<string>("ExtensaoArquivo")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)")
                         .HasColumnName("ExtensaoArquivo");
@@ -204,7 +190,6 @@ namespace VitrineAPI.Infrastructure.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("NomeArquivoOriginal")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)")
                         .HasColumnName("NomeArquivoOriginal");
@@ -259,19 +244,27 @@ namespace VitrineAPI.Infrastructure.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Descricao");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Nome");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("Ativo")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubCategoria");
+                    b.ToTable("SubCategorias", (string)null);
                 });
 
             modelBuilder.Entity("CategoriaSubCategoria", b =>

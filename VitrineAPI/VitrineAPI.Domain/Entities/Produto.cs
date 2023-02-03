@@ -17,7 +17,7 @@ namespace VitrineAPI.Domain.Entities
 
         public int Quantidade { get; private set; }
 
-        public CondicaoProduto CondicaoProduto { get; private set; }
+        public string CondicaoProduto { get; private set; }
 
         public SubCategoria SubCategoria { get; private set; }
 
