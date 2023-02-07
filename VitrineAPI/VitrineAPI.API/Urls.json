@@ -1,12 +1,25 @@
 {
   "ProdutoDesenvolvimento": {
-    "IP": "\\\\205.144.171.86\\Sites\\Sistemas\\DevLabs\\Arquivos\\Projeto\\Imagens",
-    "DNS": "https://sistemashomologacao.suafaculdade.com.br/DevLabs/Arquivos/Projeto/Imagens",
-    "SPLIT": "DevLabs/"
+    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+        "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
+        "SPLIT": "Imagem/"
   },
   "ProdutoProducao": {
-    "IP": "\\\\192.168.103.20\\Sites\\Sistemas\\DevLabs\\Arquivos\\Projeto\\Imagens",
-    "DNS": "https://sistemashomologacao.suafaculdade.com.br/DevLabs/Arquivos/Projeto/Imagens",
-    "SPLIT": "DevLabs/"
+    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Produto/"
   }
 }
+
+//{
+//  "ProdutoDesenvolvimento": {
+//    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+//    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
+//    "SPLIT": "Imagem/"
+//  },
+//  "ProdutoProducao": {
+//    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+//    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
+//    "SPLIT": "Imagem/"
+//  }
+//}

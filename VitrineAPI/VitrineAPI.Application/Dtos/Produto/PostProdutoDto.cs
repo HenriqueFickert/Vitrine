@@ -40,6 +40,14 @@ namespace VitrineAPI.Application.Dtos.Produto
         public string Nome { get; set; }
 
         /// <summary>
+        /// Descrição
+        /// </summary>
+        /// <example>Produto</example>
+        [Display(Name = "Descrição do produto.")]
+        [Required(ErrorMessage = "O campo descrição do produto é obrigatório.")]
+        public string Descricao { get; set; }
+
+        /// <summary>
         /// Valor
         /// </summary>
         /// <example>1</example>

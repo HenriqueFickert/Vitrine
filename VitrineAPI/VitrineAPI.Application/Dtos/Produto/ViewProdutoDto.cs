@@ -1,4 +1,6 @@
-﻿using VitrineAPI.Application.Dtos.Fabricante;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+using VitrineAPI.Application.Dtos.Fabricante;
 using VitrineAPI.Application.Dtos.SubCategoria;
 using VitrineAPI.Domain.Enum;
 
@@ -16,6 +18,8 @@ namespace VitrineAPI.Application.Dtos.Produto
         public Guid SubCategoriaId { get; set; }
 
         public string Nome { get; set; }
+
+        public string Descricao { get; set; }
 
         public int Valor { get; set; }
 
