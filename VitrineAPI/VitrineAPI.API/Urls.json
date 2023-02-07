@@ -1,13 +1,13 @@
 {
   "ProdutoDesenvolvimento": {
     "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
-        "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
-        "SPLIT": "Imagem/"
+    "DNS": "https://fickert.cloud/Arquivos/Imagem",
+    "SPLIT": "Imagem/"
   },
   "ProdutoProducao": {
     "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
-    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem/Produto",
-    "SPLIT": "Produto/"
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
   }
 }
 
