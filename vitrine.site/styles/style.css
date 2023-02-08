@@ -242,7 +242,16 @@ a.menu__text {
     width: 180px;
     border-radius: 2%;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.product_image {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 .card__texts {
     margin: 0px 5px 5px 10px;
