@@ -248,6 +248,7 @@ a.menu__text {
 }
 
 .product_image {
+    border-radius: 2%;
     max-height: 100%;
     max-width: 100%;
 }

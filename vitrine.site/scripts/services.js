@@ -1,4 +1,4 @@
-var apiUrl = `http://vitrineapi.fickert.cloud/v1/`
+var apiUrl = `https://vitrineapi.fickert.cloud/v1/`
 
 function GetData(route) {
     return new Promise((resolve, reject) => {
