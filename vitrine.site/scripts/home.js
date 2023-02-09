@@ -1,17 +1,54 @@
-var request;
+var requestProduct;
 var cardElement;
 var index = 1;
 var totalPagina;
 
+var requestMenu;
+var sideMenuElement;
+
+GetMenuData();
 GetProductData()
 
 async function GetProductData() {
-    request = await GetData(`produtos?NumeroPagina=${index}&ResultadosExibidos=6`);
-    totalPagina = request.resultado.dados.totalPaginas;
-    let productList = request.resultado.pagina;
-    console.log(productList);
+    requestProduct = await GetData(`produtos?NumeroPagina=${index}&ResultadosExibidos=6`);
+    totalPagina = requestProduct.resultado.dados.totalPaginas;
+    let productList = requestProduct.resultado.pagina;
     CreateCard(productList);
 }
+
+async function GetMenuData() {
+    requestMenu = await GetData(`categorias`);
+    let menuList = requestMenu.resultado.pagina;
+    CreatMenu(menuList);
+}
+
+function CreatMenu(result) {
+    sideMenuElement = document.getElementById("menu-busca__list");
+    let menu = '';
+
+
+    console.log(result);
+    result.forEach(element => {
+        let submenus = `<ul class="submenu__list clearfix">`;
+
+        if (element.subCategorias != null) {
+            element.subCategorias?.forEach(element2 => {
+                console.log(element2.nome);
+                submenus += `<li>
+                    <a>${element2.nome}</a>
+                </li>`;
+            });
+            submenus += `</ul>`;
+            menu += `<li><a>${element.nome}</a>` + submenus;
+        } else {
+            menu += `<li><a>${element.nome}</a>`;
+        }
+    });
+
+    menu += `</li>`
+    sideMenuElement.innerHTML = menu;
+}
+
 
 function CreateCard(result) {
     cardElement = document.getElementById("list-cards");

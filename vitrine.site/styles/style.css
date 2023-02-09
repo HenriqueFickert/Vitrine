@@ -84,7 +84,6 @@ a.menu__text {
     width: 100%;
     max-width: 1235px;
     display: flex;
-    align-items: left;
     justify-content: center;
     margin: auto;
     margin-top: 15px;
@@ -276,8 +275,8 @@ a.menu__text {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     margin-bottom: auto;
 }
