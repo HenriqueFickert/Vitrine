@@ -12,7 +12,7 @@ using VitrineAPI.Infrastructure.Data;
 namespace VitrineAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230203213442_Inicial")]
+    [Migration("20230209142816_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,21 +23,6 @@ namespace VitrineAPI.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("CategoriaSubCategoria", b =>
-                {
-                    b.Property<Guid>("CategoriasId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SubCategoriasId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CategoriasId", "SubCategoriasId");
-
-                    b.HasIndex("SubCategoriasId");
-
-                    b.ToTable("CategoriaSubCategoria");
-                });
 
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Categoria", b =>
                 {
@@ -161,8 +146,8 @@ namespace VitrineAPI.Infrastructure.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)")
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)")
                         .HasColumnName("Descricao");
 
                     b.Property<string>("ExtensaoArquivo")
@@ -239,6 +224,9 @@ namespace VitrineAPI.Infrastructure.Migrations
                     b.Property<DateTime?>("AlteradoEm")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("CategoriaId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
@@ -264,22 +252,9 @@ namespace VitrineAPI.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaId");
+
                     b.ToTable("SubCategorias", (string)null);
-                });
-
-            modelBuilder.Entity("CategoriaSubCategoria", b =>
-                {
-                    b.HasOne("VitrineAPI.Domain.Entities.Categoria", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VitrineAPI.Domain.Entities.SubCategoria", null)
-                        .WithMany()
-                        .HasForeignKey("SubCategoriasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Produto", b =>
@@ -299,6 +274,22 @@ namespace VitrineAPI.Infrastructure.Migrations
                     b.Navigation("Fabricante");
 
                     b.Navigation("SubCategoria");
+                });
+
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.SubCategoria", b =>
+                {
+                    b.HasOne("VitrineAPI.Domain.Entities.Categoria", "Categoria")
+                        .WithMany("SubCategorias")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.Categoria", b =>
+                {
+                    b.Navigation("SubCategorias");
                 });
 
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Fabricante", b =>

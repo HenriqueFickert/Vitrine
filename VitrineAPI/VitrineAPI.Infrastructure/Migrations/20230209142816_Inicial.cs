@@ -47,6 +47,7 @@ namespace VitrineAPI.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoriaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Ativo"),
@@ -56,28 +57,10 @@ namespace VitrineAPI.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubCategorias", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CategoriaSubCategoria",
-                columns: table => new
-                {
-                    CategoriasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SubCategoriasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoriaSubCategoria", x => new { x.CategoriasId, x.SubCategoriasId });
                     table.ForeignKey(
-                        name: "FK_CategoriaSubCategoria_Categorias_CategoriasId",
-                        column: x => x.CategoriasId,
+                        name: "FK_SubCategorias_Categorias_CategoriaId",
+                        column: x => x.CategoriaId,
                         principalTable: "Categorias",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoriaSubCategoria_SubCategorias_SubCategoriasId",
-                        column: x => x.SubCategoriasId,
-                        principalTable: "SubCategorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -90,7 +73,7 @@ namespace VitrineAPI.Infrastructure.Migrations
                     SubCategoriaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FabricanteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false),
                     Valor = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
                     Quantidade = table.Column<int>(type: "int", maxLength: 10000, nullable: false),
                     CondicaoProduto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "Novo"),
@@ -125,11 +108,6 @@ namespace VitrineAPI.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriaSubCategoria_SubCategoriasId",
-                table: "CategoriaSubCategoria",
-                column: "SubCategoriasId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Produtos_FabricanteId",
                 table: "Produtos",
                 column: "FabricanteId");
@@ -138,24 +116,26 @@ namespace VitrineAPI.Infrastructure.Migrations
                 name: "IX_Produtos_SubCategoriaId",
                 table: "Produtos",
                 column: "SubCategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategorias_CategoriaId",
+                table: "SubCategorias",
+                column: "CategoriaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriaSubCategoria");
-
-            migrationBuilder.DropTable(
                 name: "Produtos");
-
-            migrationBuilder.DropTable(
-                name: "Categorias");
 
             migrationBuilder.DropTable(
                 name: "Fabricantes");
 
             migrationBuilder.DropTable(
                 name: "SubCategorias");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
         }
     }
 }

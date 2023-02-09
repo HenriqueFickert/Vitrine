@@ -11,7 +11,7 @@ namespace VitrineAPI.Application.Dtos.Fabricante
         /// <summary>
         /// Nome
         /// </summary>
-        /// <example>Cadeira</example>
+        /// <example>Gravity</example>
         [Display(Name = "Nome do Fabricante.")]
         [Required(ErrorMessage = "O campo nome do fabricante é obrigatório.")]
         public string Nome { get; set; }
@@ -36,8 +36,8 @@ namespace VitrineAPI.Application.Dtos.Fabricante
         /// Status
         /// </summary>
         /// <example>Ativo</example>
-        [Display(Name = "Status da cadeira.")]
-        [Required(ErrorMessage = "O campo status da cadeira é obrigatório.")]
+        [Display(Name = "Status do fabricante.")]
+        [Required(ErrorMessage = "O campo status da fabricante é obrigatório.")]
         [EnumDataType(typeof(Status), ErrorMessage = "O campo status é inválido.")]
         public Status Status { get; set; }
     }

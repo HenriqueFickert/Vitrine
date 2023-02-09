@@ -34,23 +34,23 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
             return await Task.FromResult(PagedList<Categoria>.ToPagedList(Categorias, parametersPalavraChave.NumeroPagina, parametersPalavraChave.ResultadosExibidos));
         }
 
-        public override async Task<Categoria> PostAsync(Categoria categoria)
-        {
-            return await base.PostAsync(InserCategoriaAsync(categoria));
-        }
+        //public override async Task<Categoria> PostAsync(Categoria categoria)
+        //{
+        //    return await base.PostAsync(InserCategoriaAsync(categoria));
+        //}
 
-        private Categoria InserCategoriaAsync(Categoria categoria)
-        {
-            categoria.ListaSubcategoria(categoria.SubCategorias.Select(subCategoria => appDbContext.SubCategorias.Find(subCategoria.Id)).ToList());
-            return categoria;
-        }
+        //private Categoria InserCategoriaAsync(Categoria categoria)
+        //{
+        //    categoria.ListaSubcategoria(categoria.SubCategorias.Select(subCategoria => appDbContext.SubCategorias.Find(subCategoria.Id)).ToList());
+        //    return categoria;
+        //}
 
         public override async Task<Categoria> PutAsync(Categoria categoria)
         {
-            return await base.PutAsync(await UpdateMesaAsync(categoria));
+            return await base.PutAsync(await UpdateCategoriaAsync(categoria));
         }
 
-        private async Task<Categoria> UpdateMesaAsync(Categoria categoria)
+        private async Task<Categoria> UpdateCategoriaAsync(Categoria categoria)
         {
             Categoria categoriaConsultada = await appDbContext.Categorias
                                                  .Include(p => p.SubCategorias)
@@ -68,9 +68,10 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
             categoriaConsultada.SubCategorias.Clear();
             foreach (SubCategoria subcategoria in categoria.SubCategorias)
             {
-                SubCategoria cadeiraConsultada = await appDbContext.SubCategorias.FindAsync(subcategoria.Id);
-                categoriaConsultada.SubCategorias.Add(cadeiraConsultada);
+                categoriaConsultada.SubCategorias.Add(subcategoria);
             }
+
+            await appDbContext.SaveChangesAsync();
         }
 
         public bool ValidarId(Guid id)

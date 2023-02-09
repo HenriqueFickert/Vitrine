@@ -19,9 +19,9 @@ namespace VitrineAPI.Application.Validations.Produto
               .NotEmpty()
               .WithMessage("O campo id do produto não pode ser vazio.")
 
-              .Must((putCadeiraDto, cancelar) =>
+              .Must((putProdutoDto, cancelar) =>
               {
-                  return ValidarId(putCadeiraDto.Id);
+                  return ValidarId(putProdutoDto.Id);
               }).WithMessage("Nenhuma produto foi encontrado com o id informado.");
 
             RuleFor(x => x.Nome)

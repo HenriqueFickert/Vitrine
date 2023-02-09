@@ -28,8 +28,8 @@ namespace VitrineAPI.Application.Dtos.SubCategoria
         /// Status
         /// </summary>
         /// <example>Ativo</example>
-        [Display(Name = "Status da cadeira.")]
-        [Required(ErrorMessage = "O campo status da cadeira é obrigatório.")]
+        [Display(Name = "Status da SubCategoria.")]
+        [Required(ErrorMessage = "O campo status da subcategoria é obrigatório.")]
         [EnumDataType(typeof(Status), ErrorMessage = "O campo status é inválido.")]
         public Status Status { get; set; }
     }

@@ -4,6 +4,8 @@ namespace VitrineAPI.Domain.Entities
 {
     public class SubCategoria : EntityBase
     {
+        public Guid CategoriaId { get; private set; }
+
         public string Nome { get; private set; }
 
         public string Descricao { get; private set; }
