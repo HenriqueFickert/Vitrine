@@ -18,7 +18,7 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
 
         public async Task<PagedList<Categoria>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            IQueryable<Categoria> Categorias = appDbContext.Categorias.AsNoTracking();
+            IQueryable<Categoria> Categorias = appDbContext.Categorias.Include(menu => menu.SubCategorias).AsNoTracking();
 
             if (parametersPalavraChave.PalavraChave == null && parametersPalavraChave.Id == null && parametersPalavraChave.Status == 0)
                 Categorias = Categorias.Where(x => x.Status != Status.Excluido.ToString());

@@ -22,8 +22,8 @@ namespace VitrineAPI.Infrastructure.Configurations
             builder.Property(p => p.Descricao)
                     .IsRequired()
                     .HasColumnName("Descricao")
-                    .HasMaxLength(300)
-                    .HasColumnType("varchar(300)");
+                    .HasMaxLength(2000)
+                    .HasColumnType("varchar(2000)");
 
             builder.Property(p => p.Valor)
                    .IsRequired()

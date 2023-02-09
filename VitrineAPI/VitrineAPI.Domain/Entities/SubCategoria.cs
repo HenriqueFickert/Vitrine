@@ -8,7 +8,7 @@ namespace VitrineAPI.Domain.Entities
 
         public string Descricao { get; private set; }
 
-        public List<Categoria> Categorias { get; private set; }
+        public Categoria Categoria { get; private set; }
 
         public List<Produto> Produtos { get; private set; }
     }
