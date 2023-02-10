@@ -26,14 +26,11 @@ function CreatMenu(result) {
     sideMenuElement = document.getElementById("menu-busca__list");
     let menu = '';
 
-
-    console.log(result);
     result.forEach(element => {
         let submenus = `<ul class="submenu__list clearfix">`;
 
         if (element.subCategorias != null) {
             element.subCategorias?.forEach(element2 => {
-                console.log(element2.nome);
                 submenus += `<li>
                     <a>${element2.nome}</a>
                 </li>`;

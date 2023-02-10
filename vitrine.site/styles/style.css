@@ -1,6 +1,13 @@
 body {
     margin: 0px;
     padding: 0px;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
 }
 
 /* navbar */
@@ -60,11 +67,12 @@ a.menu__text {
 
 /* body */
 .container-body {
-    background-color: rgb(241, 241, 241);
+    /*background-color: rgb(241, 241, 241);*/
     margin-bottom: 15px;
     margin-top: 60px;
     display: inline-block;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -94,10 +102,10 @@ a.menu__text {
 /* MENU LATERAL */
 .menu-busca {
     margin-right: 15px;
-    background-color: grey;
+    /*background-color: grey;*/
     border-radius: 5px;
     min-width: 250px;
-    height: 500px;
+    height: auto;
 }
 
 .menu-busca__list {
@@ -319,8 +327,8 @@ a.menu__text {
 /* footer */
 .footer {
     background-color: rgb(53, 53, 53);
-    /* flex-grow: 0;
-    flex-basis: auto; */
+    flex-grow: 0;
+    flex-basis: auto;
     min-height: 60px;
     display: flex;
     align-items: center;
