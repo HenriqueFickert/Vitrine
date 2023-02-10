@@ -46,7 +46,6 @@ function CreatMenu(result) {
     sideMenuElement.innerHTML = menu;
 }
 
-
 function CreateCard(result) {
     cardElement = document.getElementById("list-cards");
 
