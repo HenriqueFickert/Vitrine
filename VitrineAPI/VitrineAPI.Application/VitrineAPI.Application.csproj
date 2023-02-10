@@ -20,4 +20,9 @@
     <ProjectReference Include="..\VitrineAPI.Identity\VitrineAPI.Identity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validations\TipoImagem\" />
+    <Folder Include="Validations\Upload\" />
+  </ItemGroup>
+
 </Project>

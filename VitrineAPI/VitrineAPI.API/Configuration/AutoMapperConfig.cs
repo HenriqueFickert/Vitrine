@@ -11,6 +11,8 @@ namespace VitrineAPI.API.Configuration
                typeof(CategoriaMappingProfile),
                typeof(SubCategoriaMappingProfile),
                typeof(FabricanteMappingProfile),
+               typeof(UploadMappingProfile),
+               typeof(TipoImagemMappingProfile),
                typeof(UsuarioMappingProfile));
         }
     }

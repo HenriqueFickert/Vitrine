@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using VitrineAPI.Application.Dtos.Upload;
 using VitrineAPI.Domain.Enum;
 
 namespace VitrineAPI.Application.Dtos.Produto
@@ -9,10 +9,6 @@ namespace VitrineAPI.Application.Dtos.Produto
     /// </summary>
     public class PostProdutoDto
     {
-        [Display(Name = "Imagem do Produto.")]
-        [Required(ErrorMessage = "O campo imagem do produto é obrigatório.")]
-        public IFormFile ImagemUpload { get; set; }
-
         /// <summary>
         /// Id do Fabricante
         /// </summary>
@@ -71,6 +67,14 @@ namespace VitrineAPI.Application.Dtos.Produto
         [Required(ErrorMessage = "O campo condição do produto é obrigatório.")]
         [EnumDataType(typeof(CondicaoProduto), ErrorMessage = "O campo condição do produto é inválido.")]
         public CondicaoProduto CondicaoProduto { get; set; }
+
+        /// <summary>
+        /// Lista de ids de Imagens
+        /// </summary>
+        /// <example>Novo</example>
+        [Display(Name = "Ids de Imagens.")]
+        [Required(ErrorMessage = "O campo ids de imagem do produto é obrigatório.")]
+        public List<ReferenciaUploadDto> ListaUploads { get; set; }
 
         /// <summary>
         /// Status

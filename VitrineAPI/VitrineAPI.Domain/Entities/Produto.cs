@@ -1,9 +1,8 @@
 ﻿using VitrineAPI.Domain.Entities.Base;
-using VitrineAPI.Domain.Enum;
 
 namespace VitrineAPI.Domain.Entities
 {
-    public class Produto : UploadIFormFileBase
+    public class Produto : EntityBase
     {
         public Guid SubCategoriaId { get; private set; }
 
@@ -22,5 +21,12 @@ namespace VitrineAPI.Domain.Entities
         public SubCategoria SubCategoria { get; private set; }
 
         public Fabricante Fabricante { get; private set; }
+
+        public List<Upload> Uploads { get; private set; }
+
+        public void AlterarUploads(List<Upload> uploads)
+        {
+            Uploads = uploads;
+        }
     }
 }

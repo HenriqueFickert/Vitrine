@@ -31,6 +31,14 @@ namespace VitrineAPI.API.Configuration
             services.AddScoped<IFabricanteService, FabricanteService>();
             services.AddScoped<IFabricanteApplication, FabricanteApplication>();
 
+            services.AddScoped<IUploadRepository, UploadRepository>();
+            services.AddScoped<IUploadService, UploadService>();
+            services.AddScoped<IUploadApplication, UploadApplication>();
+
+            services.AddScoped<ITipoImagemRepository, TipoImagemRepository>();
+            services.AddScoped<ITipoImagemService, TipoImagemService>();
+            services.AddScoped<ITipoImagemApplication, TipoImagemApplication>();
+
             services.AddScoped<IUsuarioApplication, UsuarioApplication>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioService, UsuarioService>();

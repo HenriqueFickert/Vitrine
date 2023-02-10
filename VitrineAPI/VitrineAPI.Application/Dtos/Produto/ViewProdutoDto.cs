@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
-using VitrineAPI.Application.Dtos.Fabricante;
+﻿using VitrineAPI.Application.Dtos.Fabricante;
 using VitrineAPI.Application.Dtos.SubCategoria;
 using VitrineAPI.Domain.Enum;
 
@@ -26,10 +24,6 @@ namespace VitrineAPI.Application.Dtos.Produto
         public int Quantidade { get; set; }
 
         public CondicaoProduto CondicaoProduto { get; set; }
-
-        public string CaminhoAbsoluto { get; set; }
-
-        public string CaminhoRelativo { get; set; }
 
         public ViewFabricanteDto Fabricante { get; set; }
 

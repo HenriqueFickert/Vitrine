@@ -11,10 +11,6 @@ namespace VitrineAPI.Application.Interfaces
     {
         Task<ViewPagedListDto<Produto, ViewProdutoDto>> GetPaginationAsync(ParametersBase parametersBase);
 
-        Task<ViewProdutoDto> PostAsync(PostProdutoDto postProdutoDto, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
-
-        Task<ViewProdutoDto> PutAsync(PutProdutoDto putProdutoDto, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
-
         bool ValidarId(Guid id);
     }
 }

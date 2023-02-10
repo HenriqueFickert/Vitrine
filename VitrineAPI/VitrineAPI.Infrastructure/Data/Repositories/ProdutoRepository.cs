@@ -33,6 +33,50 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
             return await Task.FromResult(PagedList<Produto>.ToPagedList(produtos, parametersBase.NumeroPagina, parametersBase.ResultadosExibidos));
         }
 
+
+        public override async Task<Produto> PostAsync(Produto produto)
+        {
+            return await base.PostAsync(await InserirProdutoAsync(produto));
+        }
+
+        private async Task<Produto> InserirProdutoAsync(Produto produto)
+        {
+            produto.AlterarUploads(produto.Uploads.Select(upload => appDbContext.Uploads.Find(upload.Id)).ToList());
+            await Task.CompletedTask;
+            return produto;
+        }
+
+        public override async Task<Produto> PutAsync(Produto produto)
+        {
+            return await base.PutAsync(await AtualizarProdutoAsync(produto));
+        }
+
+        private async Task<Produto> AtualizarProdutoAsync(Produto produto)
+        {
+            Produto produtoConsultado = await appDbContext.Produtos
+                         .Include(x => x.Uploads)
+                         .FirstOrDefaultAsync(x => x.Id == produto.Id);
+
+            if (produtoConsultado is null)
+                return null;
+
+            appDbContext.Entry(produtoConsultado).CurrentValues.SetValues(produto);
+
+            await AtualizarHashtagAsync(produto, produtoConsultado);
+
+            return produtoConsultado;
+        }
+
+        private async Task AtualizarHashtagAsync(Produto produto, Produto produtoConsultado)
+        {
+            produtoConsultado.Uploads.Clear();
+            foreach (Upload upload in produto.Uploads)
+            {
+                Upload hashtagConsultado = await appDbContext.Uploads.FindAsync(upload.Id);
+                produtoConsultado.Uploads.Add(hashtagConsultado);
+            }
+        }
+
         public bool ValidarId(Guid id)
         {
             return appDbContext.Produtos.Any(x => x.Id == id);

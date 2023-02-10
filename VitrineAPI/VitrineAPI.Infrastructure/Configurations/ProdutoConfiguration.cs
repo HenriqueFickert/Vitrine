@@ -5,7 +5,7 @@ using VitrineAPI.Infrastructure.Configurations.Base;
 
 namespace VitrineAPI.Infrastructure.Configurations
 {
-    public class ProdutoConfiguration : ConfigurationUploadFormBase<Produto>
+    public class ProdutoConfiguration : ConfigurationBase<Produto>
     {
         public override void Configure(EntityTypeBuilder<Produto> builder)
         {

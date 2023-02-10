@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VitrineAPI.API.Controllers;
-using VitrineAPI.Application.Applications;
 using VitrineAPI.Application.Dtos.Base;
-using VitrineAPI.Application.Dtos.Pagination;
 using VitrineAPI.Application.Dtos.Fabricante;
+using VitrineAPI.Application.Dtos.Pagination;
 using VitrineAPI.Application.Interfaces;
 using VitrineAPI.Domain.Core.Interfaces.Services;
 using VitrineAPI.Domain.Core.Notifier;

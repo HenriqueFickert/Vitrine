@@ -11,5 +11,7 @@ namespace VitrineAPI.Domain.Entities
         public string CNPJ { get; private set; }
 
         public List<Produto> Produtos { get; private set; }
+
+        public List<Upload> Uploads { get; private set; }
     }
 }

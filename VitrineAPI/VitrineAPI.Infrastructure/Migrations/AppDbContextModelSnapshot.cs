@@ -22,6 +22,36 @@ namespace VitrineAPI.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("FabricanteUpload", b =>
+                {
+                    b.Property<Guid>("FabricantesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UploadsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FabricantesId", "UploadsId");
+
+                    b.HasIndex("UploadsId");
+
+                    b.ToTable("FabricanteUpload");
+                });
+
+            modelBuilder.Entity("ProdutoUpload", b =>
+                {
+                    b.Property<Guid>("ProdutosId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UploadsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProdutosId", "UploadsId");
+
+                    b.HasIndex("UploadsId");
+
+                    b.ToTable("ProdutoUpload");
+                });
+
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Categoria", b =>
                 {
                     b.Property<Guid>("Id")
@@ -255,6 +285,143 @@ namespace VitrineAPI.Infrastructure.Migrations
                     b.ToTable("SubCategorias", (string)null);
                 });
 
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.TipoImagem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AlteradoEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CriadoEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Nome");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("Ativo")
+                        .HasColumnName("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoImagens", (string)null);
+                });
+
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.Upload", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AlteradoEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CaminhoAbsoluto")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("CaminhoAbsoluto");
+
+                    b.Property<string>("CaminhoFisico")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("CaminhoFisico");
+
+                    b.Property<string>("CaminhoRelativo")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("CaminhoRelativo");
+
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("ContentType");
+
+                    b.Property<DateTime>("CriadoEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExtensaoArquivo")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("ExtensaoArquivo");
+
+                    b.Property<DateTime>("HoraEnvio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("NomeArquivoBanco")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("NomeArquivoBanco")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<string>("NomeArquivoOriginal")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("NomeArquivoOriginal");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("1")
+                        .HasColumnName("Status");
+
+                    b.Property<string>("TamanhoEmBytes")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("TamanhoEmBytes");
+
+                    b.Property<Guid>("TipoImagemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoImagemId");
+
+                    b.ToTable("Uploads", (string)null);
+                });
+
+            modelBuilder.Entity("FabricanteUpload", b =>
+                {
+                    b.HasOne("VitrineAPI.Domain.Entities.Fabricante", null)
+                        .WithMany()
+                        .HasForeignKey("FabricantesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VitrineAPI.Domain.Entities.Upload", null)
+                        .WithMany()
+                        .HasForeignKey("UploadsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProdutoUpload", b =>
+                {
+                    b.HasOne("VitrineAPI.Domain.Entities.Produto", null)
+                        .WithMany()
+                        .HasForeignKey("ProdutosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VitrineAPI.Domain.Entities.Upload", null)
+                        .WithMany()
+                        .HasForeignKey("UploadsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Produto", b =>
                 {
                     b.HasOne("VitrineAPI.Domain.Entities.Fabricante", "Fabricante")
@@ -285,6 +452,17 @@ namespace VitrineAPI.Infrastructure.Migrations
                     b.Navigation("Categoria");
                 });
 
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.Upload", b =>
+                {
+                    b.HasOne("VitrineAPI.Domain.Entities.TipoImagem", "TipoImagem")
+                        .WithMany("Uploads")
+                        .HasForeignKey("TipoImagemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoImagem");
+                });
+
             modelBuilder.Entity("VitrineAPI.Domain.Entities.Categoria", b =>
                 {
                     b.Navigation("SubCategorias");
@@ -298,6 +476,11 @@ namespace VitrineAPI.Infrastructure.Migrations
             modelBuilder.Entity("VitrineAPI.Domain.Entities.SubCategoria", b =>
                 {
                     b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("VitrineAPI.Domain.Entities.TipoImagem", b =>
+                {
+                    b.Navigation("Uploads");
                 });
 #pragma warning restore 612, 618
         }

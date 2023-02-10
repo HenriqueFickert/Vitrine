@@ -2,6 +2,7 @@
 {
     public enum Diretorios
     {
-        Produto = 1
+        Produto = 1,
+        Upload
     }
 }
