@@ -14,6 +14,7 @@ namespace VitrineAPI.Application.Applications
     public class ProdutoApplication : ApplicationBase<Produto, ViewProdutoDto, PostProdutoDto, PutProdutoDto, PutStatusDto>, IProdutoApplication
     {
         private readonly IProdutoService produtoService;
+        private readonly IUploadApplication uploadApplication;
 
         public ProdutoApplication(IProdutoService produtoService,
                                 INotificador notificador,
