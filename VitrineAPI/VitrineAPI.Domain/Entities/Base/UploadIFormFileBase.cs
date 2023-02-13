@@ -10,7 +10,7 @@ namespace VitrineAPI.Domain.Entities.Base
 
         public Guid NomeArquivoBanco { get; private set; }
 
-        public long TamanhoEmBytes { get; private set; }
+        public long? TamanhoEmBytes { get; private set; }
 
         public string ContentType { get; private set; }
 
@@ -24,7 +24,7 @@ namespace VitrineAPI.Domain.Entities.Base
 
         public string CaminhoFisico { get; private set; }
 
-        public DateTime HoraEnvio { get; private set; }
+        public DateTime? HoraEnvio { get; private set; }
 
         protected UploadIFormFileBase()
         { }

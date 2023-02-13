@@ -74,7 +74,7 @@ namespace VitrineAPI.Application.Dtos.Produto
         /// <example>Novo</example>
         [Display(Name = "Ids de Imagens.")]
         [Required(ErrorMessage = "O campo ids de imagem do produto é obrigatório.")]
-        public List<ReferenciaUploadDto> ListaUploads { get; set; }
+        public List<ReferenciaUploadDto> Uploads { get; set; }
 
         /// <summary>
         /// Status

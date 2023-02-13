@@ -18,7 +18,10 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
 
         public async Task<PagedList<Produto>> GetPaginationAsync(ParametersBase parametersBase)
         {
-            IQueryable<Produto> produtos = appDbContext.Produtos.AsNoTracking();
+            IQueryable<Produto> produtos = appDbContext.Produtos.Include(x => x.Fabricante)
+                                                                .Include(x => x.SubCategoria)
+                                                                .Include(x=>x.Uploads)
+                                                                .ThenInclude(x=>x.TipoImagem).AsNoTracking();
 
             if (parametersBase.Id == null && parametersBase.Status == 0)
                 produtos = produtos.Where(x => x.Status != Status.Excluido.ToString());
@@ -41,10 +44,24 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
 
         private async Task<Produto> InserirProdutoAsync(Produto produto)
         {
-            produto.AlterarUploads(produto.Uploads.Select(upload => appDbContext.Uploads.Find(upload.Id)).ToList());
-            await Task.CompletedTask;
+            await InsertUploadsAsync(produto);
             return produto;
         }
+
+
+        private async Task InsertUploadsAsync(Produto produto)
+        {
+            List<Upload> uploadConsultados = new List<Upload>();
+
+            foreach (Upload upload in produto.Uploads)
+            {
+                Upload produtoConsultado = await appDbContext.Uploads.FindAsync(upload.Id);
+                uploadConsultados.Add(produtoConsultado);
+            }
+
+            produto.AlterarUploads(uploadConsultados);
+        }
+
 
         public override async Task<Produto> PutAsync(Produto produto)
         {

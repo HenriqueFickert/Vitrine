@@ -1,5 +1,6 @@
 ﻿using VitrineAPI.Application.Dtos.Fabricante;
 using VitrineAPI.Application.Dtos.SubCategoria;
+using VitrineAPI.Application.Dtos.Upload;
 using VitrineAPI.Domain.Enum;
 
 namespace VitrineAPI.Application.Dtos.Produto
@@ -28,6 +29,9 @@ namespace VitrineAPI.Application.Dtos.Produto
         public ViewFabricanteDto Fabricante { get; set; }
 
         public ViewSubCategoriaDto SubCategoria { get; set; }
+
+        public List<ViewUploadDto> Uploads { get; set; }
+
 
         public Status Status { get; set; }
     }
