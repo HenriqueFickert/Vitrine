@@ -26,25 +26,26 @@ function CreatMenu(result) {
     sideMenuElement = document.getElementById("menu-busca__list");
     let menu = '';
 
-    result.forEach(element => {
+    result.forEach(menuElement => {
         let submenus = `<ul class="submenu__list clearfix">`;
 
-        if (element.subCategorias != null) {
-            element.subCategorias?.forEach(element2 => {
+        if (menuElement.subCategorias != null) {
+            menuElement.subCategorias?.forEach(submenuElement => {
                 submenus += `<li>
-                    <a>${element2.nome}</a>
+                    <a id="${submenuElement.id}">${submenuElement.nome}</a>
                 </li>`;
             });
             submenus += `</ul>`;
-            menu += `<li><a>${element.nome}</a>` + submenus;
+            menu += `<li><a id="${menuElement.id}">${menuElement.nome}</a>` + submenus;
         } else {
-            menu += `<li><a>${element.nome}</a>`;
+            menu += `<li><a id="${menuElement.id}">${menuElement.nome}</a>`;
         }
     });
 
     menu += `</li>`
     sideMenuElement.innerHTML = menu;
 }
+
 
 function CreateCard(result) {
     cardElement = document.getElementById("list-cards");
