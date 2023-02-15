@@ -22,6 +22,10 @@ async function GetMenuData() {
     CreatMenu(menuList);
 }
 
+function menu() {
+    document.getElementById('mobile').classList.toggle('active')
+}
+
 function CreatMenu(result) {
     sideMenuElement = document.getElementById("menu-busca__list");
     let menu = '';
