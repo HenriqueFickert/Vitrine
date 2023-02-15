@@ -15,9 +15,9 @@ namespace VitrineAPI.Domain.Service
             this.produtoRepository = produtoRepository;
         }
 
-        public async Task<PagedList<Produto>> GetPaginationAsync(ParametersBase parametersBase)
+        public async Task<PagedList<Produto>> GetPaginationAsync(ParametersProduto parametersProduto)
         {
-            return await produtoRepository.GetPaginationAsync(parametersBase);
+            return await produtoRepository.GetPaginationAsync(parametersProduto);
         }
 
         public bool ValidarId(Guid id)

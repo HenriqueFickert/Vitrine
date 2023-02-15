@@ -23,9 +23,9 @@ namespace VitrineAPI.Application.Applications
             this.produtoService = produtoService;
         }
 
-        public async Task<ViewPagedListDto<Produto, ViewProdutoDto>> GetPaginationAsync(ParametersBase parametersBase)
+        public async Task<ViewPagedListDto<Produto, ViewProdutoDto>> GetPaginationAsync(ParametersProduto parametersProduto)
         {
-            PagedList<Produto> pagedList = await produtoService.GetPaginationAsync(parametersBase);
+            PagedList<Produto> pagedList = await produtoService.GetPaginationAsync(parametersProduto);
             return new ViewPagedListDto<Produto, ViewProdutoDto>(pagedList, mapper.Map<List<ViewProdutoDto>>(pagedList));
         }
 

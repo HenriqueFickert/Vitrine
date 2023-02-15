@@ -6,7 +6,7 @@ namespace VitrineAPI.Domain.Core.Interfaces.Services
 {
     public interface IProdutoService : IServiceBase<Produto>
     {
-        Task<PagedList<Produto>> GetPaginationAsync(ParametersBase parametersBase);
+        Task<PagedList<Produto>> GetPaginationAsync(ParametersProduto parametersProduto);
 
         bool ValidarId(Guid id);
     }

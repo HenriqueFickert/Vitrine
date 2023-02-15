@@ -9,7 +9,7 @@ namespace VitrineAPI.Application.Interfaces
 {
     public interface IProdutoApplication : IApplicationBase<Produto, ViewProdutoDto, PostProdutoDto, PutProdutoDto, PutStatusDto>
     {
-        Task<ViewPagedListDto<Produto, ViewProdutoDto>> GetPaginationAsync(ParametersBase parametersBase);
+        Task<ViewPagedListDto<Produto, ViewProdutoDto>> GetPaginationAsync(ParametersProduto parametersProduto);
 
         bool ValidarId(Guid id);
     }

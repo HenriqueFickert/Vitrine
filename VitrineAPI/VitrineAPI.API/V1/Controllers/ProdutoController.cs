@@ -18,30 +18,25 @@ namespace VitrineAPI.API.V1.Controllers
     public class ProdutoController : MainController
     {
         private readonly IProdutoApplication produtoApplication;
-        private readonly Ambiente ambiente;
 
         public ProdutoController(IProdutoApplication produtoApplication,
-                                IWebHostEnvironment environment,
                                 INotificador notificador,
                                 IUser user) : base(notificador, user)
         {
             this.produtoApplication = produtoApplication;
-
-            ambiente = environment.IsProduction() ? Ambiente.Producao :
-                environment.IsStaging() ? Ambiente.Homologacao : Ambiente.Desenvolvimento;
         }
 
         /// <summary>
         /// Retorna todos os produtos com filtro e paginação de dados.
         /// </summary>
-        /// <param name="parameters"></param>
+        /// <param name="parametersProduto"></param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ViewPagedListDto<Produto, ViewProdutoDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetAllAsync([FromQuery] ParametersBase parameters)
+        public async Task<IActionResult> GetAllAsync([FromQuery] ParametersProduto parametersProduto)
         {
-            ViewPagedListDto<Produto, ViewProdutoDto> result = await produtoApplication.GetPaginationAsync(parameters);
+            ViewPagedListDto<Produto, ViewProdutoDto> result = await produtoApplication.GetPaginationAsync(parametersProduto);
 
             if (result.Pagina.Count is 0)
             {
@@ -80,12 +75,11 @@ namespace VitrineAPI.API.V1.Controllers
         /// Altera um produto.
         /// </summary>
         /// <param name="putProdutoDto"></param>
-        /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(typeof(ViewProdutoDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutAsync([FromBody] PutProdutoDto putProdutoDto, Diretorios diretorios)
+        public async Task<IActionResult> PutAsync([FromBody] PutProdutoDto putProdutoDto)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);

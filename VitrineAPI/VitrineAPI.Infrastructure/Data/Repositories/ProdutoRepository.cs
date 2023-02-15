@@ -16,24 +16,30 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
             this.appDbContext = appDbContext;
         }
 
-        public async Task<PagedList<Produto>> GetPaginationAsync(ParametersBase parametersBase)
+        public async Task<PagedList<Produto>> GetPaginationAsync(ParametersProduto parametersProduto)
         {
             IQueryable<Produto> produtos = appDbContext.Produtos.Include(x => x.Fabricante)
                                                                 .Include(x => x.SubCategoria)
                                                                 .Include(x=>x.Uploads)
                                                                 .ThenInclude(x=>x.TipoImagem).AsNoTracking();
 
-            if (parametersBase.Id == null && parametersBase.Status == 0)
+            if (parametersProduto.Id == null && parametersProduto.Status == 0)
                 produtos = produtos.Where(x => x.Status != Status.Excluido.ToString());
-            else if (parametersBase.Status != 0)
-                produtos = produtos.Where(x => x.Status == parametersBase.Status.ToString());
+            else if (parametersProduto.Status != 0)
+                produtos = produtos.Where(x => x.Status == parametersProduto.Status.ToString());
 
-            if (parametersBase.Id != null)
-                produtos = produtos.Where(x => parametersBase.Id.Contains(x.Id));
+            if (!string.IsNullOrEmpty(parametersProduto.PalavraChave))
+                produtos = produtos.Where(programa => EF.Functions.Like(programa.Nome, $"%{parametersProduto.PalavraChave}%"));
+
+            if (parametersProduto.Id != null)
+                produtos = produtos.Where(x => parametersProduto.Id.Contains(x.Id));
+
+            if (parametersProduto.subcategoriasId != null)
+                produtos = produtos.Where(x => parametersProduto.subcategoriasId.Contains(x.SubCategoriaId));
 
             produtos = produtos.OrderBy(x => x.CriadoEm);
 
-            return await Task.FromResult(PagedList<Produto>.ToPagedList(produtos, parametersBase.NumeroPagina, parametersBase.ResultadosExibidos));
+            return await Task.FromResult(PagedList<Produto>.ToPagedList(produtos, parametersProduto.NumeroPagina, parametersProduto.ResultadosExibidos));
         }
 
 
@@ -48,10 +54,9 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
             return produto;
         }
 
-
         private async Task InsertUploadsAsync(Produto produto)
         {
-            List<Upload> uploadConsultados = new List<Upload>();
+            List<Upload> uploadConsultados = new ();
 
             foreach (Upload upload in produto.Uploads)
             {
@@ -61,7 +66,6 @@ namespace VitrineAPI.Infrastructure.Data.Repositories
 
             produto.AlterarUploads(uploadConsultados);
         }
-
 
         public override async Task<Produto> PutAsync(Produto produto)
         {
