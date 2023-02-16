@@ -113,23 +113,6 @@ a.menu__text {
     list-style-type: none;
 }
 
-.menu-busca__list li:last-child {
-    border-radius: 0px 0px 5px 5px;
-}
-
-.menu-busca__list li:first-child {
-    border-radius: 5px 5px 0px 0px;
-}
-
-
-.menu-busca__list li:only-child {
-    border-radius: 5px 5px 5px 5px;
-}
-
-.menu-busca__list>li:hover {
-    background: #444;
-}
-
 .menu-busca__list li:hover>.submenu__list {
     display: block;
     max-height: 100%;
@@ -147,23 +130,6 @@ a.menu__text {
     position: relative;
     text-overflow: ellipsis;
     overflow: hidden;
-}
-
-.submenu__list li:last-child {
-    border-radius: 0px 0px 5px 5px;
-}
-
-.submenu__list li:first-child {
-    border-radius: 5px 5px 0px 0px;
-}
-
-.submenu__list li:only-child {
-    border-radius: 5px 5px 5px 5px;
-}
-
-.submenu__list li:hover {
-    cursor: pointer;
-    background: #555;
 }
 
 .clearfix:after {
@@ -308,6 +274,7 @@ a.menu__text {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .footer__text {
@@ -344,11 +311,46 @@ a.menu__text {
         align-items: center;
         text-align: left;
     }
+
+    .menu-busca__list>li:hover {
+        background: rgb(43, 43, 43);
+    }
+
+    .menu-busca__list li:last-child {
+        border-radius: 0px 0px 5px 5px;
+    }
+
+    .menu-busca__list li:first-child {
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .menu-busca__list li:only-child {
+        border-radius: 5px 5px 5px 5px;
+    }
+
+    .submenu__list li:hover {
+        cursor: pointer;
+        background: #555;
+    }
+
+    .submenu__list li:last-child {
+        border-radius: 0px 0px 5px 5px;
+    }
+
+    .submenu__list li:first-child {
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .submenu__list li:only-child {
+        border-radius: 5px 5px 5px 5px;
+    }
+
+    .submenu__list li {
+        background-color: #666;
+    }
 }
 
-
 @media only screen and (max-width: 1104px) {
-
     .container-produtos {
         flex-direction: column;
     }
@@ -358,7 +360,7 @@ a.menu__text {
         position: fixed;
         top: 0;
         height: 100vh;
-        background-color: rgb(53, 53, 53);
+        background-color: black;
         border-radius: 0;
         z-index: 200;
         max-width: 25vh;
@@ -366,14 +368,13 @@ a.menu__text {
         transition: left 1s;
         display: flex;
         flex-direction: column;
-
         justify-content: space-between;
-
     }
 
     .submenu__list {
         max-height: 0;
         overflow: hidden;
+        border-radius: 0;
     }
 
     .submenu__list {
@@ -381,12 +382,6 @@ a.menu__text {
         padding: 0px;
         list-style-type: none;
         white-space: nowrap;
-        background: #444;
-        border-radius: 5px;
-    }
-
-    .menu-busca__list>li {
-        float: right;
     }
 
     .menu-busca__list li {
@@ -394,10 +389,23 @@ a.menu__text {
         background-color: rgb(53, 53, 53);
         width: 100%;
         height: auto;
-        color: red;
+        color: white;
         position: relative;
         align-items: center;
         text-align: left;
+    }
+
+    .menu-busca__list li:hover {
+        background-color: rgb(43, 43, 43);
+    }
+
+    .submenu__list li:hover {
+        cursor: pointer;
+        background: #555;
+    }
+
+    .submenu__list li {
+        background-color: #666;
     }
 }
 
