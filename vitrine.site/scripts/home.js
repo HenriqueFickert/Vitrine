@@ -1,10 +1,13 @@
 var requestProduct;
-var cardElement;
+var cardElement = document.getElementById("list-cards");
 var index = 1;
 var totalPagina;
 
 var requestMenu;
 var sideMenuElement;
+var lastClicked = "";
+
+var buscar = document.getElementById("buscar");
 
 GetMenuData();
 GetProductData()
@@ -13,8 +16,12 @@ async function GetProductData() {
     requestProduct = await GetData(`produtos?NumeroPagina=${index}&ResultadosExibidos=6`);
     totalPagina = requestProduct.resultado.dados.totalPaginas;
     let productList = requestProduct.resultado.pagina;
-    console.log(productList);
+
     CreateCard(productList);
+
+    if (index == totalPagina)
+        document.getElementById("btnShowMore").disabled = true
+
 }
 
 async function GetMenuData() {
@@ -23,7 +30,7 @@ async function GetMenuData() {
     CreatMenu(menuList);
 }
 
-function menu() {
+function ToogleSideMenuBuscaButton() {
     document.getElementById('sideMenuBusca').classList.toggle('active')
 }
 
@@ -53,7 +60,6 @@ function CreatMenu(result) {
 }
 
 function CreateCard(result) {
-    cardElement = document.getElementById("list-cards");
 
     result.forEach(element => {
         cardElement.innerHTML += `<li id ="${element.id}"class="card">
@@ -72,8 +78,6 @@ function ShowMore() {
     index < totalPagina ? (index++, GetProductData(), index == totalPagina ? document.getElementById("btnShowMore").disabled = true : false) : false
 }
 
-var lastClicked = "";
-
 function ShowSubMenuButtonResponsive(event) {
     const elementos = document.querySelectorAll('.submenuvisible');
     elementos.forEach(function (elemento) {
@@ -87,4 +91,19 @@ function ShowSubMenuButtonResponsive(event) {
         document.getElementById(event.target.id + '-check').classList.remove('submenuvisible');
         lastClicked = "";
     }
+}
+
+buscar.addEventListener("keyup", function () {
+    GetBuscarProdutos(buscar.value)
+})
+
+async function GetBuscarProdutos(params) {
+    requisicaoProduto = await GetData(`produtos?PalavraChave=${params}`);
+    cardElement.innerHTML = "";
+    if (!requisicaoProduto.sucesso) {
+        cardElement.innerHTML += `<h2 class="mensagem-erro-buscar">${requisicaoProduto.erros[0]}</h2>`
+    }
+    totalPagina = requisicaoProduto.resultado.dados.totalPaginas;
+    let productList = requisicaoProduto.resultado.pagina;
+    CreateCard(productList);
 }

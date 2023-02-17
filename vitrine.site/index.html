@@ -16,10 +16,12 @@
             <h1 class="container-logo__logo">Vitrine</h1>
         </div>
         <ul class="menu">
+            <input type="text" id="buscar">
             <li class="menu__item"><a class="menu__text" href="default.asp">HOME</a></li>
             <li class="menu__item"><a class="menu__text" href="contact.asp">CONTACT</a></li>
             <li class="menu__item"><a class="menu__text" href="about.asp">ABOUT</a></li>
-            <li class="menu__item menubuscanavbutton"><button class="menu__text" onclick="menu()">MENU</button></li>
+            <li class="menu__item menubuscanavbutton"><button class="menu__text"
+                    onclick="ToogleSideMenuBuscaButton()">MENU</button></li>
         </ul>
     </nav>
 
@@ -30,7 +32,7 @@
             </div>
             <div class="container-produtos">
                 <!-- Menu Lateral -->
-                <div class="menu-busca" id="mobileMenu">
+                <div class="menu-busca" id="sideMenuBusca">
                     <ul id="menu-busca__list" class="menu-busca__list clearfix">
                     </ul>
                 </div>
