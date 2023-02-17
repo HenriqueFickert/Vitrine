@@ -102,8 +102,9 @@ async function GetBuscarProdutos(params) {
     cardElement.innerHTML = "";
     if (!requisicaoProduto.sucesso) {
         cardElement.innerHTML += `<h2 class="mensagem-erro-buscar">${requisicaoProduto.erros[0]}</h2>`
+    } else {
+        totalPagina = requisicaoProduto.resultado.dados.totalPaginas;
+        let productList = requisicaoProduto.resultado.pagina;
+        CreateCard(productList);
     }
-    totalPagina = requisicaoProduto.resultado.dados.totalPaginas;
-    let productList = requisicaoProduto.resultado.pagina;
-    CreateCard(productList);
 }
