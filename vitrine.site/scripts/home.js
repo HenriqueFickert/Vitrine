@@ -24,7 +24,7 @@ async function GetMenuData() {
 }
 
 function menu() {
-    document.getElementById('mobile').classList.toggle('active')
+    document.getElementById('sideMenuBusca').classList.toggle('active')
 }
 
 function CreatMenu(result) {
@@ -41,16 +41,16 @@ function CreatMenu(result) {
                 </li>`;
             });
             submenus += `</ul>`;
-            menu += `<li><a id="${menuElement.id}">${menuElement.nome}</a>` + submenus;
+            menu += `<li id="${menuElement.id}-check"><a onclick="ShowSubMenuButtonResponsive(event)" id="${menuElement.id}">
+            ${menuElement.nome}</a>` + submenus;
+            menu += `</li> `
         } else {
             menu += `<li><a id="${menuElement.id}">${menuElement.nome}</a>`;
+            menu += `</li>`
         }
     });
-
-    menu += `</li>`
     sideMenuElement.innerHTML = menu;
 }
-
 
 function CreateCard(result) {
     cardElement = document.getElementById("list-cards");
@@ -70,4 +70,21 @@ function CreateCard(result) {
 
 function ShowMore() {
     index < totalPagina ? (index++, GetProductData(), index == totalPagina ? document.getElementById("btnShowMore").disabled = true : false) : false
+}
+
+var lastClicked = "";
+
+function ShowSubMenuButtonResponsive(event) {
+    const elementos = document.querySelectorAll('.submenuvisible');
+    elementos.forEach(function (elemento) {
+        elemento.classList.remove('submenuvisible');
+    });
+
+    if (lastClicked != event.target.id) {
+        document.getElementById(event.target.id + '-check').classList.add('submenuvisible')
+        lastClicked = event.target.id;
+    } else {
+        document.getElementById(event.target.id + '-check').classList.remove('submenuvisible');
+        lastClicked = "";
+    }
 }
