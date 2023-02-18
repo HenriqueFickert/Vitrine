@@ -101,7 +101,7 @@ async function GetBuscarProdutos(params) {
     requisicaoProduto = await GetData(`produtos?PalavraChave=${params}`);
     cardElement.innerHTML = "";
     if (!requisicaoProduto.sucesso) {
-        cardElement.innerHTML += `<h2 class="mensagem-erro-buscar">${requisicaoProduto.erros[0]}</h2>`
+        cardElement.innerHTML += `<h5 class="mensagem-erro-buscar">${requisicaoProduto.erros[0]}</h5>`
     } else {
         totalPagina = requisicaoProduto.resultado.dados.totalPaginas;
         let productList = requisicaoProduto.resultado.pagina;

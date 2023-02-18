@@ -146,7 +146,6 @@ a.menu__text {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .produtos-cards-titulo {
@@ -276,6 +275,10 @@ a.menu__text {
 .footer__text {
     color: white;
     font-size: 13px;
+}
+
+.mensagem-erro-buscar {
+    margin: 10px
 }
 
 /*1105*/
