@@ -282,9 +282,10 @@ a.menu__text {
 }
 
 .buscar-box {
+    margin-right: 10px;
     background-color: #ffffff;
     border-radius: 40px;
-    max-height: 34px;
+    max-height: 29px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -309,8 +310,8 @@ a.menu__text {
 .buscar-box__button {
     color: #222;
     float: right;
-    width: 36px;
-    height: 36px;
+    width: 31px;
+    height: 31px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
