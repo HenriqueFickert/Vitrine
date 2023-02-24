@@ -281,6 +281,58 @@ a.menu__text {
     margin: 10px
 }
 
+.buscar-box {
+    background-color: #ffffff;
+    border-radius: 40px;
+    max-height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buscar-box:hover>.buscar-box__input {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.buscar-box__input {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    font-size: 16px;
+    transition: 0.4s;
+    width: 0px;
+    text-indent: 15px;
+}
+
+.buscar-box__button {
+    color: #222;
+    float: right;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    margin-right: -1px;
+}
+
+.buscar-box__button-search {
+    max-width: 20px;
+    height: auto;
+    transition: 1s;
+}
+
+.buscar-box:hover>.buscar-box__button {
+    background: #222;
+}
+
+.buscar-box:hover>.buscar-box__button>.buscar-box__button-search {
+    fill: white;
+}
+
 /*1105*/
 @media only screen and (min-width: 821px) {
 

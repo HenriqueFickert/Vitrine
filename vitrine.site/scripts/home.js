@@ -1,27 +1,54 @@
-var requestProduct;
+//Cards de Produto
+var productRequest;
 var cardElement = document.getElementById("list-cards");
 var index = 1;
-var totalPagina;
+var totalPages;
 
+//Menu de Busca Lateral
 var requestMenu;
-var sideMenuElement;
+var sideMenuElement = document.getElementById("menu-busca__list");
 var lastClicked = "";
 
-var buscar = document.getElementById("buscar");
+//Buscar
+var searchInput = document.getElementById("buscar-input");
 
 GetMenuData();
 GetProductData()
+searchInput.addEventListener("keyup", function () {
+    GetSearchProducts(searchInput.value)
+})
+
+function ToogleSideMenuBuscaButton() {
+    document.getElementById('sideMenuBusca').classList.toggle('active')
+}
 
 async function GetProductData() {
-    requestProduct = await GetData(`produtos?NumeroPagina=${index}&ResultadosExibidos=6`);
-    totalPagina = requestProduct.resultado.dados.totalPaginas;
-    let productList = requestProduct.resultado.pagina;
+    productRequest = await GetData(`produtos?NumeroPagina=${index}&ResultadosExibidos=6`);
+    totalPages = productRequest.resultado.dados.totalPaginas;
+    let productList = productRequest.resultado.pagina;
 
     CreateCard(productList);
 
-    if (index == totalPagina)
+    if (index == totalPages)
         document.getElementById("btnShowMore").disabled = true
+}
 
+function CreateCard(result) {
+    result.forEach(element => {
+        cardElement.innerHTML += `<li id ="${element.id}"class="card">
+        <div class="card__image"><img class="product_image" src="${element.uploads[0].caminhoAbsoluto}"></div>
+        <div class="card__texts">
+            <h2 class="card__text-titulo">${element.nome}</h2>
+            <p class="card__text-descricao">${element.descricao}</p>
+            <p class="card__text-quantidade">Qnt: ${element.quantidade}</p>
+            <h3 class="card__text-valor">R$ ${element.valor}</h3>
+        </div>
+        </li>`;
+    });
+}
+
+function ShowMore() {
+    index < totalPages ? (index++, GetProductData(), index == totalPages ? document.getElementById("btnShowMore").disabled = true : false) : false
 }
 
 async function GetMenuData() {
@@ -29,18 +56,11 @@ async function GetMenuData() {
     let menuList = requestMenu.resultado.pagina;
     CreatMenu(menuList);
 }
-
-function ToogleSideMenuBuscaButton() {
-    document.getElementById('sideMenuBusca').classList.toggle('active')
-}
-
 function CreatMenu(result) {
-    sideMenuElement = document.getElementById("menu-busca__list");
-    let menu = '';
 
+    let menu = '';
     result.forEach(menuElement => {
         let submenus = `<ul class="submenu__list clearfix">`;
-
         if (menuElement.subCategorias != null) {
             menuElement.subCategorias?.forEach(submenuElement => {
                 submenus += `<li>
@@ -56,26 +76,8 @@ function CreatMenu(result) {
             menu += `</li>`
         }
     });
+
     sideMenuElement.innerHTML = menu;
-}
-
-function CreateCard(result) {
-
-    result.forEach(element => {
-        cardElement.innerHTML += `<li id ="${element.id}"class="card">
-        <div class="card__image"><img class="product_image" src="${element.uploads[0].caminhoAbsoluto}"></div>
-        <div class="card__texts">
-            <h2 class="card__text-titulo">${element.nome}</h2>
-            <p class="card__text-descricao">${element.descricao}</p>
-            <p class="card__text-quantidade">Qnt: ${element.quantidade}</p>
-            <h3 class="card__text-valor">R$ ${element.valor}</h3>
-        </div>
-        </li>`;
-    });
-}
-
-function ShowMore() {
-    index < totalPagina ? (index++, GetProductData(), index == totalPagina ? document.getElementById("btnShowMore").disabled = true : false) : false
 }
 
 function ShowSubMenuButtonResponsive(event) {
@@ -93,18 +95,15 @@ function ShowSubMenuButtonResponsive(event) {
     }
 }
 
-buscar.addEventListener("keyup", function () {
-    GetBuscarProdutos(buscar.value)
-})
-
-async function GetBuscarProdutos(params) {
-    requisicaoProduto = await GetData(`produtos?PalavraChave=${params}`);
+async function GetSearchProducts(params) {
+    productRequest = await GetData(`produtos?PalavraChave=${params}`);
     cardElement.innerHTML = "";
-    if (!requisicaoProduto.sucesso) {
-        cardElement.innerHTML += `<h5 class="mensagem-erro-buscar">${requisicaoProduto.erros[0]}</h5>`
+
+    if (!productRequest.sucesso) {
+        cardElement.innerHTML += `<h5 class="mensagem-erro-buscar">${productRequest.erros[0]}</h5>`
     } else {
-        totalPagina = requisicaoProduto.resultado.dados.totalPaginas;
-        let productList = requisicaoProduto.resultado.pagina;
+        totalPages = productRequest.resultado.dados.totalPaginas;
+        let productList = productRequest.resultado.pagina;
         CreateCard(productList);
     }
 }
