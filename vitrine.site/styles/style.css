@@ -308,7 +308,7 @@ a.menu__text {
 }
 
 .buscar-box__button {
-    color: #222;
+    color: #444;
     float: right;
     width: 31px;
     height: 31px;
@@ -327,7 +327,7 @@ a.menu__text {
 }
 
 .buscar-box:hover>.buscar-box__button {
-    background: #222;
+    background: #444;
 }
 
 .buscar-box:hover>.buscar-box__button>.buscar-box__button-search {
