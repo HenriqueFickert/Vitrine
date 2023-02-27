@@ -75,9 +75,9 @@ namespace VitrineAPI.API.V1.Controllers
                 return CustomResponse(ModelState);
             }
 
-            Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
+            Url Url = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
 
-            ViewUploadDto inserido = await uploadApplication.PostAsync(postUploadDto, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+            ViewUploadDto inserido = await uploadApplication.PostAsync(postUploadDto, Url.IP, Url.DNS, Url.SPLIT);
 
             if (inserido is null)
             {
@@ -110,9 +110,9 @@ namespace VitrineAPI.API.V1.Controllers
                     return CustomResponse(ModelState);
                 }
 
-                Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
+                Url Url = await PathSystem.GetURLs(diretorios.ToString(), ambiente);
 
-                ViewUploadDto atualizado = await uploadApplication.PutAsync(putUploadDto, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+                ViewUploadDto atualizado = await uploadApplication.PutAsync(putUploadDto, Url.IP, Url.DNS, Url.SPLIT);
 
                 if (atualizado is null)
                 {

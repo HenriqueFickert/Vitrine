@@ -38,7 +38,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
-await PathSystem.GetUrlJson();
+//await PathSystem.GetUrlJson();
 
 // Configure
 
