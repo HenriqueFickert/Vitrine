@@ -10,7 +10,10 @@ namespace VitrineAPI.Application.Utilities.Paths
     {
         public readonly static Dictionary<string, Url> Urls = new()
             {
-                {"ProdutoProducao", new Url { IP = "", DNS = "", SPLIT = ""} }
+                {"ProdutoDesenvolvimento", new Url { IP = "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco", DNS = "https://fickert.cloud/Arquivos/Imagem", SPLIT = "Imagem/"} },
+                {"ProdutoProducao", new Url { IP = "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto", DNS = "https://fickert.cloud/Arquivos/Imagem", SPLIT = "Imagem/"} },
+                {"UploadDesenvolvimento", new Url { IP = "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco", DNS = "https://fickert.cloud/Arquivos/Imagem", SPLIT = "Imagem/"} },
+                {"UploadProducao", new Url { IP = "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto", DNS = "https://fickert.cloud/Arquivos/Imagem", SPLIT = "Imagem/"} },
             };
     }
 }
