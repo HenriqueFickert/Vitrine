@@ -334,6 +334,50 @@ a.menu__text {
     fill: white;
 }
 
+.news-letter {
+    height: auto;
+    width: auto;
+    background-color: #777;
+    margin-top: 10px;
+}
+
+.news-letter__title {
+    margin: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.news-letter__text {
+    margin: 10px;
+    padding-top: 10px;
+}
+
+.news-letter__input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-letter__input {
+    margin: 10px 0px 10px 10px;
+    height: 30px;
+    width: 240px;
+    outline: none;
+    border: 0px;
+    border-radius: 3px 0px 0px 3px;
+    text-indent: 10px;
+    font-size: 13px;
+}
+
+.news-letter__button {
+    height: 32px;
+    border: 0px;
+    border-radius: 0px 3px 3px 0px;
+    width: 45px;
+    background-color: #222;
+}
+
 /*1105*/
 @media only screen and (min-width: 821px) {
 
