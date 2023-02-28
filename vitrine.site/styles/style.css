@@ -339,12 +339,21 @@ a.menu__text {
     width: auto;
     background-color: #777;
     margin-top: 10px;
+    border-radius: 5px;
+}
+
+.news-letter__title-bar {
+    border-radius: 5px 5px 0px 0px;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-letter__title {
     margin: 10px;
-    padding-top: 10px;
     font-weight: bold;
+    color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -376,6 +385,8 @@ a.menu__text {
     border-radius: 0px 3px 3px 0px;
     width: 45px;
     background-color: #222;
+    font-weight: bold;
+    color: white;
 }
 
 /*1105*/
