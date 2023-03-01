@@ -190,7 +190,7 @@ a.menu__text {
     width: 200px;
     display: inline-block;
     border-radius: 2%;
-
+    height: auto;
 }
 
 .card__image {
@@ -211,7 +211,7 @@ a.menu__text {
 }
 
 .card__texts {
-    margin: 0px 5px 5px 10px;
+    margin: 0px 5px 5px 5px;
     height: 140px;
     max-width: 180px;
     text-align: center;
@@ -235,6 +235,7 @@ a.menu__text {
     -webkit-line-clamp: 4;
     line-clamp: 4;
     -webkit-box-orient: vertical;
+    margin-top: auto;
     margin-bottom: auto;
 }
 
