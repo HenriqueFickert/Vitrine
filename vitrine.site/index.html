@@ -16,18 +16,18 @@
             <h1 class="container-logo__logo">Vitrine</h1>
         </div>
         <ul class="menu">
-            <div class="buscar-box">
+            <li class="buscar-box web">
                 <input type="text" id="buscar-input" class="buscar-box__input" placeholder="Pesquisar...">
                 <a class="buscar-box__button"><svg class="buscar-box__button-search" viewBox="0 0 512 512">
                         <path
                             d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                     </svg></a>
-            </div>
-            <li class="menu__item"><a class="menu__text" href="contact.asp">CONTACT</a></li>
-            <li class="menu__item"><a class="menu__text" href="about.asp">ABOUT</a></li>
-            <li class="menu__item"><a class="menu__text" href="default.asp">LOGIN</a></li>
-            <li class="menu__item menubuscanavbutton"><button class="menu__text"
-                    onclick="ToogleSideMenuBuscaButton()">MENU</button></li>
+            </li>
+            <li class="menu__item web"><a class="menu__text" href="contact.asp">CONTACT</a></li>
+            <li class="menu__item web"><a class="menu__text" href="about.asp">ABOUT</a></li>
+            <li class="menu__item web"><a class="menu__text" href="default.asp">LOGIN</a></li>
+            <li class="menu__item mobile"><button class="menu__text" onclick="ToogleSideMenuBuscaButton()">MENU</button>
+            </li>
         </ul>
     </nav>
 
@@ -39,7 +39,17 @@
             <div class="container-produtos">
                 <!-- Menu Lateral -->
                 <div class="menu-busca" id="sideMenuBusca">
-                    <ul id="menu-busca__list" class="menu-busca__list clearfix"></ul>
+                    <ul id="menu-busca__list" class="menu-busca__list clearfix">
+                        <li class="mobile"><a href="contact.asp">Contact</a></li>
+                        <li class="mobile"><a href="about.asp">About</a></li>
+                        <li class="mobile"><a href="default.asp">Login</a></li>
+                        <li class="mobile">
+                            <div class="menu-divisoria">
+                                <hr>
+                            </div>
+                        </li>
+
+                    </ul>
                     <div class="news-letter-side">
                         <div class="news-letter__title-bar">
                             <h3 class="news-letter__title"><svg class="news-letter__letter" viewBox="0 0 512 512">

@@ -77,7 +77,7 @@ function CreatMenu(result) {
         }
     });
 
-    sideMenuElement.innerHTML = menu;
+    sideMenuElement.innerHTML += menu;
 }
 
 function ShowSubMenuButtonResponsive(event) {
