@@ -581,7 +581,7 @@ a.menu__text {
         background-color: #111;
         border-radius: 0;
         z-index: 200;
-        min-width: 20vh;
+        min-width: 30vh;
         width: auto;
         max-width: 45vh;
         left: -300px;
