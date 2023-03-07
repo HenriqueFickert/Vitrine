@@ -72,6 +72,18 @@ namespace VitrineAPI.Application.Applications
             return mapper.Map<ViewUploadDto>(await uploadService.PutAsync(objeto));
         }
 
+        public override async Task<ViewUploadDto> DeleteAsync(Guid id)
+        {
+            ViewUploadDto deletado = await base.DeleteAsync(id);
+
+            if (deletado is null)
+                return null;
+
+            UploadFormMethods<Upload> uploadClass = new();
+            await uploadClass.DeleteImage(mapper.Map<Upload>(deletado));
+            return deletado;
+        }
+
         public bool ValidarId(Guid id)
         {
             return uploadService.ValidarId(id);
