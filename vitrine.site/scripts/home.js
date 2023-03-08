@@ -9,11 +9,28 @@ var requestMenu;
 var sideMenuElement = document.getElementById("menu-busca__list");
 var lastClicked = "";
 
+//Menu Burger
+const menuBtn = document.querySelector('.menu-burger-container');
+let menuOpen = false;
+
+
 //Buscar
 var searchInput = document.getElementById("buscar-input");
 
 GetMenuData();
 GetProductData()
+
+menuBtn.addEventListener('click', () => {
+    if (!menuOpen) {
+        menuBtn.classList.add('open');
+        menuOpen = true;
+    } else {
+        menuBtn.classList.remove('open');
+        menuOpen = false;
+    }
+    //menuOpen = !menuOpen;
+});
+
 searchInput.addEventListener("keyup", function () {
     GetSearchProducts(searchInput.value)
 })
