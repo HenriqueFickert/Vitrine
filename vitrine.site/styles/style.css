@@ -148,7 +148,7 @@ a.menu__text {
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
     padding: 0px;
 }
@@ -627,6 +627,9 @@ a.menu__text {
         flex-direction: column;
     }
 
+    .produtos-cards-titulo {
+        box-shadow: none;
+    }
 
     .menu-busca {
         float: left;
@@ -713,7 +716,6 @@ a.menu__text {
     }
 
     .buscar-box {
-        margin-top: 10px;
         background-color: #222;
         max-height: 50px;
         height: auto;
@@ -721,7 +723,8 @@ a.menu__text {
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 5px;
+        padding: 10px 0px;
+        box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.2);
     }
 
     .buscar-box__input {
@@ -729,7 +732,8 @@ a.menu__text {
         background: none;
         outline: none;
         padding: 0;
-        margin: 5px 0px 5px 5px;
+        margin: 0;
+        margin-left: 5px;
         font-size: 16px;
         height: 35px;
         width: 100%;
@@ -739,20 +743,25 @@ a.menu__text {
     }
 
     .buscar-box__button {
-        background-color: #333;
-        float: right;
-        width: 65px;
+        padding: 0px;
+        margin: 0px;
+        margin-right: 5px;
+        width: 50px;
         height: 35px;
-        border-radius: 0px 5px 5px 0px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 5px;
-        border-left: 2px solid #222;
+        border: none;
+        background: none;
+        outline: none;
+        border-radius: 0px 5px 5px 0px;
+        border-left: 3px solid #222;
+        background-color: #333;
+        fill: white;
     }
 
     .buscar-box__button-search {
-        max-width: 23px;
+        max-width: 25px;
         height: auto;
         fill: white;
     }
