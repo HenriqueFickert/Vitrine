@@ -148,7 +148,7 @@ a.menu__text {
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 10px;
     text-align: center;
     padding: 0px;
 }
@@ -403,59 +403,6 @@ a.menu__text {
     font-weight: bold;
 }
 
-.buscar-box {
-    margin-right: 10px;
-    background-color: #ffffff;
-    border-radius: 40px;
-    max-height: 29px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.buscar-box:hover>.buscar-box__input {
-    width: 240px;
-    padding: 0 6px;
-}
-
-.buscar-box__input {
-    border: none;
-    background: none;
-    outline: none;
-    padding: 0;
-    font-size: 16px;
-    transition: 0.4s;
-    width: 0px;
-    text-indent: 15px;
-}
-
-.buscar-box__button {
-    color: #444;
-    float: right;
-    width: 31px;
-    height: 31px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 1s;
-    margin-right: -1px;
-}
-
-.buscar-box__button-search {
-    max-width: 20px;
-    height: auto;
-    transition: 1s;
-}
-
-.buscar-box:hover>.buscar-box__button {
-    background: #444;
-}
-
-.buscar-box:hover>.buscar-box__button>.buscar-box__button-search {
-    fill: white;
-}
-
 .news-letter__title-bar {
     border-radius: 5px 5px 0px 0px;
     background-color: #222;
@@ -615,16 +562,71 @@ a.menu__text {
     .news-letter-footer {
         display: none;
     }
+
+    .buscar-box {
+        margin-right: 10px;
+        background-color: #ffffff;
+        border-radius: 40px;
+        max-height: 29px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buscar-box:hover>.buscar-box__input {
+        width: 240px;
+        padding: 0 6px;
+    }
+
+    .buscar-box__input {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0;
+        font-size: 16px;
+        transition: 0.4s;
+        width: 0px;
+        text-indent: 15px;
+    }
+
+    .buscar-box__button {
+        color: #444;
+        float: right;
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 1s;
+        margin-right: -1px;
+    }
+
+    .buscar-box__button-search {
+        max-width: 20px;
+        height: auto;
+        transition: 1s;
+    }
+
+    .buscar-box:hover>.buscar-box__button {
+        background: #444;
+    }
+
+    .buscar-box:hover>.buscar-box__button>.buscar-box__button-search {
+        fill: white;
+    }
+
 }
 
 @media only screen and (max-width:820px) {
     .web {
-        display: none;
+        display: none !important;
     }
 
     .container-produtos {
         flex-direction: column;
     }
+
 
     .menu-busca {
         float: left;
@@ -708,6 +710,51 @@ a.menu__text {
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    }
+
+    .buscar-box {
+        margin-top: 10px;
+        background-color: #222;
+        max-height: 50px;
+        height: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    .buscar-box__input {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0;
+        margin: 5px 0px 5px 5px;
+        font-size: 16px;
+        height: 35px;
+        width: 100%;
+        text-indent: 15px;
+        background-color: white;
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .buscar-box__button {
+        background-color: #333;
+        float: right;
+        width: 65px;
+        height: 35px;
+        border-radius: 0px 5px 5px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+        border-left: 2px solid #222;
+    }
+
+    .buscar-box__button-search {
+        max-width: 23px;
+        height: auto;
+        fill: white;
     }
 }
 

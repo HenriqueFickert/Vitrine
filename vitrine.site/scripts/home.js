@@ -13,9 +13,9 @@ var lastClicked = "";
 const menuBtn = document.querySelector('.menu-burger-container');
 let menuOpen = false;
 
-
 //Buscar
-var searchInput = document.getElementById("buscar-input");
+var searchInputWeb = document.getElementById("buscar-input-web");
+var searchInputMobile = document.getElementById("buscar-input-mobile");
 
 GetMenuData();
 GetProductData()
@@ -31,8 +31,12 @@ menuBtn.addEventListener('click', () => {
     //menuOpen = !menuOpen;
 });
 
-searchInput.addEventListener("keyup", function () {
-    GetSearchProducts(searchInput.value)
+searchInputWeb.addEventListener("keyup", function () {
+    GetSearchProducts(searchInputWeb.value)
+})
+
+searchInputMobile.addEventListener("keyup", function () {
+    GetSearchProducts(searchInputMobile.value)
 })
 
 function ToogleSideMenuBuscaButton() {
