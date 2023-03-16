@@ -7,7 +7,8 @@ namespace VitrineAPI.API.Configuration
     {
         public static void AddDatabaseConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Connection")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("VitrineConnectionString")));
+            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Connection")));
         }
 
         public static void UseDatabaseConfiguration(this IApplicationBuilder app)
