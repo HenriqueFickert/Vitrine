@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VitrineAPI.Domain\VitrineAPI.Domain.csproj" />
+    <ProjectReference Include="..\VitrineAPI.Identity\VitrineAPI.Identity.csproj" />
+  </ItemGroup>
+
+</Project>

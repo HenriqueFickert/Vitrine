@@ -1,0 +1,35 @@
+{
+  "ProdutoDesenvolvimento": {
+    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem",
+    "SPLIT": "Imagem/"
+  },
+  "ProdutoProducao": {
+    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
+  },
+  "UploadDesenvolvimento": {
+    "IP": "C:\\Users\\163915\\Pictures\\BancoImagens",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
+  },
+  "UploadProducao": {
+    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
+  }
+}
+
+//{
+//  "ProdutoDesenvolvimento": {
+//    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+//    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
+//    "SPLIT": "Imagem/"
+//  },
+//  "ProdutoProducao": {
+//    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+//    "DNS": "https://vitrine.fickert.cloud/Arquivos/Imagem",
+//    "SPLIT": "Imagem/"
+//  }
+//}
